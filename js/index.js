@@ -1,24 +1,79 @@
-const slideDuration = 5000;
 let slides;
+let slideTransitionBlocks;
 let currentSlide = 0;
+let slideTransitionSingleBlockDuration;
+
+const slideDuration = 5000;
+const slideTransitionDuration = 1000;
+const slideTransitionActive = "content-slides-transition-block-active";
+const slideTransitionInactive = "content-slides-transition-block-inactive";
 
 function initializeSlides()
 {
-	slides = document.getElementById("content-slides").children;
-	setInterval(loopSlide, slideDuration);
+	slideTransitionBlocks = document.getElementsByClassName("content-slides-transition-block");
+	slideTransitionSingleBlockDuration = slideTransitionDuration / slideTransitionBlocks.length;
+	if (slideTransitionBlocks.length != 3)
+	{
+		throw new Error("Functionality for the number of slideTransitionBlocks only supports a block of 3 elements.");
+	}
+	slideTransitionActivate(false);
+	slides = document.getElementsByClassName("content-slide");
+	setTimeout(waitSlide, slideDuration);
+}
+
+function slideTransitionActivate(active)
+{
+	if (active)
+	{
+		slideSetTransitionBlockActive(active, 0);
+		setTimeout(() =>
+		{
+			slideSetTransitionBlockActive(active, 1);
+			setTimeout(() => { slideSetTransitionBlockActive(active, 2); }, slideTransitionSingleBlockDuration);
+		}, slideTransitionSingleBlockDuration);
+	}
+	else
+	{
+		slideSetTransitionBlockActive(active, 0);
+		setTimeout(() =>
+		{
+			slideSetTransitionBlockActive(active, 1);
+			setTimeout(() => { slideSetTransitionBlockActive(active, 2); }, slideTransitionSingleBlockDuration);
+		}, slideTransitionSingleBlockDuration);
+	}
+}
+
+function slideSetTransitionBlockActive(active, index)
+{
+	if (active)
+	{
+		slideTransitionBlocks[index].classList.remove(slideTransitionInactive);
+		slideTransitionBlocks[index].classList.add(slideTransitionActive);
+	}
+	else
+	{
+		slideTransitionBlocks[index].classList.add(slideTransitionInactive);
+		slideTransitionBlocks[index].classList.remove(slideTransitionActive);
+	}
+}
+
+function waitSlide()
+{
+	slideTransitionActivate(true);
+	setTimeout(() => { slideTransitionActivate(false); loopSlide(); }, slideTransitionDuration);
 }
 
 function loopSlide() 
 {
-	for (let i = 0; i < slides.length; i++)
+	for (let k = 0; k < slides.length; k++)
 	{
-		if (i == currentSlide)
+		if (k == currentSlide)
 		{
-			slides[i].style.display = "block";
+			slides[k].style.display = "block";
 		}
 		else
 		{
-			slides[i].style.display = "none";
+			slides[k].style.display = "none";
 		}
 	}
 	currentSlide += 1;
@@ -26,6 +81,7 @@ function loopSlide()
 	{	
 		currentSlide = 0;
 	}
+	setTimeout(waitSlide, slideDuration);
 }
 
 let footer;
