@@ -41,11 +41,15 @@
 				<nav class="nav-header"><a href="questions.html">Česta pitanja</a></nav>
 			</div>
 		</header>
-		<div id="content">
+		<section id="content">
 			<div id="content-wrapper">
 				<div id="content-slides-background">
 				</div>
 				<div id="content-slides">
+					<div id="content-slides-controls">
+						<div id="content-slides-previous" onclick="previousSlide()"></div>
+						<div id="content-slides-next" onclick="nextSlide()"></div>
+					</div>
 					<div id="content-slides-transition">
 						<div class="content-slides-transition-block"></div>
 						<div class="content-slides-transition-block"></div>
@@ -53,7 +57,7 @@
 					</div>
 					<div class="content-slide">
 						<div class="content-slide-text">
-							<h1>Resenja za sve probleme</h1>
+							<div class="content-slide-header">Resenja za sve probleme . . .</div>
 						</div>
 						<img src="images/slides/fixing.jpg">
 					</div>
@@ -64,7 +68,10 @@
 						<img src="images/slides/lighting.jpg">
 					</div>
 				</div>
-				<div>
+				<div id="content-slides-buttons">
+					<div onclick="changeSlide(0)" class="element"></div>
+					<div onclick="changeSlide(1)" class="element"></div>
+					<div onclick="changeSlide(2)" class="element"></div>
 				</div>
 			</div>
 		</div>

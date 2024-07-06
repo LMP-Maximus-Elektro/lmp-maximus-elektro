@@ -1,9 +1,14 @@
+:root
+{
+	--header-color-dark: rgb(24, 24, 24);
+}
+
 header
 {
 	z-index: 10;
 	position: absolute;
 	width: 100%;
-	background: rgb(24, 24, 24);
+	background: var(--header-color-dark);
 	display: flex;
 	flex-direction: row;
 	flex: flex-grow;
@@ -22,6 +27,7 @@ header
 {
 	height: 350px;
 	z-index: 5;
+	display: none;
 }
 
 #header-logo-wrapper
@@ -41,7 +47,7 @@ header
 
 #header-logo-circle
 {
-	background: rgb(24, 24, 24);
+	background: var(--header-color-dark);
 	opacity: 100%;
 	width: 150px;
 	height: 150px;

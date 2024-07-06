@@ -5,6 +5,29 @@ footer
 	width: 100%;
 	opacity: 0;
 	transition: opacity 0.2s;
+	z-index: 10;
+	user-select: none;
+	pointer-events: none;
+}
+
+footer.active
+{
+	opacity: 1;
+}
+
+footer.inactive
+{
+	opacity: 0;
+}
+
+footer.active a
+{
+	pointer-events: auto;
+}
+
+footer.inactive a
+{
+	pointer-events: none;
 }
 
 .footer-contact-item
