@@ -190,22 +190,78 @@ function startSlideTimeout()
 	slideTimeout = setTimeout(() => { incrementSlide(); waitSlide(); }, slideDuration);
 }
 
+// HEADER & FOOTER
+
 let footer;
 let header;
 
 function hideFooter()
 {
-	//footer.style.opacity = 0;
 	footer.classList.remove("active");
 	footer.classList.add("inactive");
 }
 
 function showFooter()
 {
-	//footer.style.opacity = 1;
 	footer.classList.remove("inactive");
 	footer.classList.add("active");
 }
+
+function handleScrollFooter()
+{
+	if (window.scrollY > 0)
+	{
+		showFooter();
+	}
+	else
+	{
+		hideFooter();
+	}
+}
+
+// SHOWCASE
+
+let showcaseItems;
+let showcaseStart;
+
+const showcaseStartDelay = 40;
+
+function handleScrollShowcase()
+{
+	if (window.scrollY > window.innerHeight - showcaseStart - showcaseStartDelay)
+	{
+		showShowcases();
+	}
+	else
+	{
+		hideShowcases();
+	}
+}
+
+function initShowcase()
+{
+	showcaseItems = document.getElementsByClassName("content-showcase");
+	showcaseStart = document.getElementById("content-showcase").getBoundingClientRect().top;
+	hideShowcases();
+}
+
+function showShowcases()
+{
+	for (let i = 0; i < showcaseItems.length; i++)
+	{
+		showcaseItems[i].setAttribute("class", "content-showcase active");
+	}
+}
+
+function hideShowcases()
+{
+	for (let i = 0; i < showcaseItems.length; i++)
+	{
+		showcaseItems[i].setAttribute("class", "content-showcase inactive");
+	}
+}
+
+// INIT
 
 function initialize()
 {
@@ -221,12 +277,14 @@ function initialize()
 	document.getElementById("content-slides-background").style.top = headerSize;
 	
 	initializeSlides();
+	initShowcase();
 }
 
 function loadHeaderAndFooter()
 {
 	fetch("pages/header.html").then((response) => { return response.text(); }).then((html) => { header.innerHTML = html; }).catch((error) => { showError(error); });
 	fetch("pages/footer.html").then((response) => { return response.text(); }).then((html) => { footer.innerHTML = html; }).catch((error) => { showError(error); });
+	document.getElementById("footer-distancer").style.height = footer.offsetHeight;
 }
 
 function showError(error)
@@ -236,12 +294,6 @@ function showError(error)
 
 function handleScroll()
 {
-	if (window.scrollY > 0)
-	{
-		showFooter();
-	}
-	else
-	{
-		hideFooter();
-	}
+	handleScrollFooter();
+	handleScrollShowcase();
 }

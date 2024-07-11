@@ -103,3 +103,8 @@ footer.inactive a
 {
 	height: 250px;
 }
+
+#footer-distancer
+{
+	width: 100%;
+}
