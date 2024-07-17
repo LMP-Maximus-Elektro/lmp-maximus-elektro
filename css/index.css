@@ -438,7 +438,7 @@ body
 
 #content-articles
 {
-	padding: 40px 20px 20px 80px;
+	padding: 40px 20px 40px 80px;
 	display: flex;
 	flex-direction: column;
 	gap: 50px;
