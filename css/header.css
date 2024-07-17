@@ -13,7 +13,6 @@ header
 	flex-direction: row;
 	flex: flex-grow;
 	justify-content: center;
-	/*background: linear-gradient(0deg, rgba(208,208,208,1) 0%, rgba(240,240,240,1) 10%, rgba(255,255,255,1) 15%);*/
 }
 
 #header-background
@@ -36,7 +35,6 @@ header
 	width: 80px;
 	height: 80px;
 	margin: 10px;
-	/*background-color: red;*/
 }
 
 #header-logo-circle-wrapper

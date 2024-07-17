@@ -1,6 +1,9 @@
 :root
 {
 	--content-color-dark: rgb(20, 20, 20);
+	--content-color-dark-transparent: rgba(20, 20, 20, 0.9);
+	--content-color-orange: #ff5923;
+	--content-color-yellow: #fff601;
 }
 
 #page-background
@@ -49,22 +52,21 @@ body
 	transition-delay: display 0.2s;
 }
 
-.content-slide-text
+.content-slide .text
 {
 	padding: 50px;
 	position: absolute;
 	width: 1280px;
 	height: 720px;
-	
 	color: white;
 }
 
-.content-slide-header
+.content-slide .text .header
 {
 	padding: 10px 50px 10px 15px;
 	width: fit-content;
 	font-size: 30px;
-	background: var(--content-color-dark);
+	background: var(--content-color-dark-transparent);
 }
 
 #content-slides
@@ -210,14 +212,91 @@ body
 {
 	user-select: none;
 	pointer-events: none;
-	padding: 20px;
+	padding: 20px 20px 50px 20px;
 	max-width: 100%;
 	height: fit-content;
 	position: relative;
+	overflow: hidden;
 	display: flex;
+	flex-direction: column;
+}
+
+#content-showcase > h1
+{
+	color: white;
+	transition: opacity 1.5s;
+	opacity: 1;
+	margin: 40px 0px 20px 0px;
+	padding-left: 50px;
+	font-size: 30px;
+	opacity: 0;
+}
+
+#content-showcase > h1:after
+{
+	display: block;
+	position: absolute;
+	content: '';
+	height: 3px;
+	width: 0px;
+	background-color: var(--content-color-orange);
+	transition: width 0.7s ease-out;
+	transition-delay: 0.2s;
+	transform: translate(0px, 4px);
+}
+
+#content-showcase > h1:before
+{
+	content: '';
+	display: block;
+	position: absolute;
+	transform: translate(-10px, 31px);
+	width: 20px;
+	height: 20px;
+	opacity: 0px;
+	border-radius: 10px;
+	background-color: var(--content-color-orange);
+	transition: transform 0.7s ease-out 0.2s, opacity 0.2s;
+}
+
+#content-showcase > h1.active:before
+{
+	transform: translate(340px , 30px);
+	opacity: 1;
+}
+
+#content-showcase > h1.inactive:before
+{
+	transform: translate(-10px, 30px);
+	opacity: 0;
+}
+
+#content-showcase > h1.active
+{
+	opacity: 1;
+}
+
+#content-showcase > h1.inactive
+{
+	opacity: 0;
+}
+
+#content-showcase > h1.active:after
+{
+	width: 350px;
+}
+
+#content-showcase > h1.inactive:after
+{
+	width: 0px;
+}
+
+#content-showcase .elements
+{
+	display: flex;
+	flex-wrap: wrap;
 	flex-direction: row;
 	justify-content: space-evenly;
-	overflow: hidden;
 }
 
 #content-showcase-background
@@ -269,7 +348,6 @@ body
 	align-items: center;
 	flex-direction: column;
 	transition: all 0.5s ease;
-	transition-delay: attr('data-index', s);
 }
 
 .content-showcase-image-wrapper
@@ -351,4 +429,110 @@ body
 	line-height: 35px;
 	padding: 10px 30px 0px 30px;
 	margin: 0px;
+}
+
+#also-offer
+{
+	margin: 100px 0px 0px 0px !important;
+}
+
+#content-articles
+{
+	padding: 40px 20px 20px 80px;
+	display: flex;
+	flex-direction: column;
+	gap: 50px;
+}
+
+#content-articles > article
+{
+	display: flex;
+}
+
+#content-articles > article.left
+{
+	justify-content: flex-start;
+}
+
+#content-articles > article.right
+{
+	justify-content: flex-end;
+}
+
+#content-articles > article > .wrapper
+{
+	border-radius: 20px;
+	width: 1200px;
+	height: fit-content;
+	background-color: var(--content-color-dark-transparent);
+	padding: 30px;
+	color: white;
+	
+	transition: all 1.5s ease;
+	opacity: 0;
+	transform: translate(-100%, 0px);
+}
+
+#content-articles > article.left > .wrapper
+{
+	transform: translate(-100%, 0px);
+}
+
+#content-articles > article.right > .wrapper
+{
+	transform: translate(100%, 0px);
+}
+
+#content-articles > article.inactive.left > .wrapper
+{
+	transform: translate(-100%, 0px);
+}
+
+#content-articles > article.inactive.right > .wrapper
+{
+	transform: translate(100%, 0px);
+}
+
+#content-articles > article.active > .wrapper
+{
+	opacity: 1;
+	transform: translate(0px, 0px);
+}
+
+#content-articles > article.inactive > .wrapper
+{
+	opacity: 0;
+}
+
+#content-articles > article img
+{
+	width: 350px;
+	aspect-ratio: 16/9;
+	padding: 5px;
+	border-radius: 10px;
+}
+
+#content-articles > article p
+{
+	margin: 10px 0px 0px 15px;
+	text-align: justify;
+	font-size: 20px;
+}
+
+#content-articles > article h1
+{
+	font-size: 25px;
+	margin: 0px 0px 5px 0px;
+}
+
+#content-articles > article hr
+{
+	border: 1px solid var(--content-color-orange);
+}
+
+#content-articles > article .text
+{
+	margin-top: 25px;
+	display: flex;
+	flex-direction: row;
 }

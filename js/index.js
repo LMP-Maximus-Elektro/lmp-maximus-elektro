@@ -32,7 +32,7 @@ function setActiveSlideSelector(index)
 	slideSelectors[index].setAttribute("class", "element active");
 }
 
-function initializeSlides()
+function initSlides()
 {
 	loadSlideSelectors();
 	slideTransitionBlocks = document.getElementsByClassName("content-slides-transition-block");
@@ -194,6 +194,27 @@ function startSlideTimeout()
 
 let footer;
 let header;
+let headerSize;
+let footerSize;
+
+const footerDistancerId = "footer-distancer";
+
+function initHeaderFooter()
+{
+	header = document.querySelector("header");
+	footer = document.querySelector("footer");
+	loadHeaderFooter();
+	headerSize = header.offsetHeight;
+	footerSize = footer.querySelector("#footer-wrapper").offsetHeight;
+	hideFooter();
+	document.getElementById(footerDistancerId).style.height = footerSize;
+}
+
+function loadHeaderFooter()
+{
+	fetch("pages/header.html").then((response) => { return response.text(); }).then((html) => { header.innerHTML = html; }).catch((error) => { showError(error); });
+	fetch("pages/footer.html").then((response) => { return response.text(); }).then((html) => { footer.innerHTML = html; }).catch((error) => { showError(error); });
+}
 
 function hideFooter()
 {
@@ -209,7 +230,7 @@ function showFooter()
 
 function handleScrollFooter()
 {
-	if (window.scrollY > 0)
+	if (window.scrollY > footerSize)
 	{
 		showFooter();
 	}
@@ -219,81 +240,77 @@ function handleScrollFooter()
 	}
 }
 
-// SHOWCASE
+// SCROLL
 
-let showcaseItems;
-let showcaseStart;
-
-const showcaseStartDelay = 40;
-
-function handleScrollShowcase()
+function ScrollElement(el, offset = 0)
 {
-	if (window.scrollY > window.innerHeight - showcaseStart - showcaseStartDelay)
+	this.el = el;
+	this.offset = offset;
+}
+
+let scrollElements;
+
+const dataScrollAttr = '[data-scroll]';
+const dataScrollOffsetAttr = 'data-scroll-offset';
+
+function initScroll()
+{
+	let scrolls = document.querySelectorAll(dataScrollAttr);
+	scrollElements = [scrolls.length];
+	for (let i = 0; i < scrolls.length; i++)
 	{
-		showShowcases();
+		scrollElements[i] = new ScrollElement(scrolls[i], scrolls[i].getAttribute(dataScrollOffsetAttr));
+	}
+}
+
+function handleScroll()
+{
+	for (let i = 0; i < scrollElements.length; i++)
+	{
+		showScrollElement(scrollElements[i], isWithinScroll(scrollElements[i]));
+	}
+	handleScrollFooter();
+}
+
+function showScrollElement(el, show)
+{
+	if (show)
+	{
+		el.el.classList.add("active");
+		el.el.classList.remove("inactive");
 	}
 	else
 	{
-		hideShowcases();
+		el.el.classList.remove("active");
+		el.el.classList.add("inactive");
 	}
 }
 
-function initShowcase()
+function isWithinScroll(el, offset = 0)
 {
-	showcaseItems = document.getElementsByClassName("content-showcase");
-	showcaseStart = document.getElementById("content-showcase").getBoundingClientRect().top;
-	hideShowcases();
-}
-
-function showShowcases()
-{
-	for (let i = 0; i < showcaseItems.length; i++)
+	if (window.scrollY > el.el.getBoundingClientRect().top - el.offset)
 	{
-		showcaseItems[i].setAttribute("class", "content-showcase active");
+		return true;
 	}
-}
-
-function hideShowcases()
-{
-	for (let i = 0; i < showcaseItems.length; i++)
+	else
 	{
-		showcaseItems[i].setAttribute("class", "content-showcase inactive");
+		return false;
 	}
 }
-
 // INIT
 
 function initialize()
 {
-	header = document.querySelector("header");
-	footer = document.querySelector("footer");
-	
-	loadHeaderAndFooter();
-	
-	headerSize = document.querySelector("header").offsetHeight;
-	hideFooter();
-	
+	initHeaderFooter();
 	document.getElementById("content").style.paddingTop = headerSize;
 	document.getElementById("content-slides-background").style.top = headerSize;
 	
-	initializeSlides();
-	initShowcase();
-}
-
-function loadHeaderAndFooter()
-{
-	fetch("pages/header.html").then((response) => { return response.text(); }).then((html) => { header.innerHTML = html; }).catch((error) => { showError(error); });
-	fetch("pages/footer.html").then((response) => { return response.text(); }).then((html) => { footer.innerHTML = html; }).catch((error) => { showError(error); });
-	document.getElementById("footer-distancer").style.height = footer.offsetHeight;
+	initScroll();
+	
+	initSlides();
 }
 
 function showError(error)
 {
 	//alert("Došlo je do greške web stranice. Molimo Vas da prijavite grešku na i-mejl adresu nikola2001zagorac@gmail.com\n" + error.message);
-}
-
-function handleScroll()
-{
-	handleScrollFooter();
-	handleScrollShowcase();
 }
