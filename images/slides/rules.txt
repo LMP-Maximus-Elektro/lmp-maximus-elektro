@@ -1,7 +1,0 @@
-images must be 1280x720 resolution
-
-images must be .jpg format
-
-images are to be placed in the division element
-with the id "content-slides" under a division
-of class "content-slide"
