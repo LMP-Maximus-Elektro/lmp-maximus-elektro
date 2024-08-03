@@ -43,12 +43,16 @@
 		</header>
 		<section id="content">
 			<div id="content-wrapper">
-				<div id="content-slides-background">
-				</div>
+				<div id="content-background"></div>
 				<div id="content-slides">
 					<div id="content-slides-controls">
 						<div id="content-slides-previous" onclick="previousSlide()"></div>
 						<div id="content-slides-next" onclick="nextSlide()"></div>
+						<div id="content-slides-buttons">
+							<div onclick="changeSlide(0)" class="element"></div>
+							<div onclick="changeSlide(1)" class="element"></div>
+							<div onclick="changeSlide(2)" class="element"></div>
+						</div>
 					</div>
 					<div id="content-slides-transition">
 						<div class="content-slides-transition-block"></div>
@@ -68,74 +72,73 @@
 						<img src="images/slides/lighting.jpg">
 					</div>
 				</div>
-				<div id="content-slides-buttons">
-					<div onclick="changeSlide(0)" class="element"></div>
-					<div onclick="changeSlide(1)" class="element"></div>
-					<div onclick="changeSlide(2)" class="element"></div>
-				</div>
 				<div id="content-showcase">
-					<h1 data-scroll>U našoj ponudi</h1>
-					<div id="content-showcase-background"></div>
+					<h1 data-scroll id="content-offers-header">U našoj ponudi</h1>
 					<div class="elements">
-						<div class="content-showcase inactive" data-scroll data-scroll-offset=50>
+						<div class="content-showcase inactive" data-scroll data-scroll-offset=-300>
 							<div class="content-showcase-image-wrapper">
 								<img src="images/showcase/instalacije.webp">
 							</div>
 							<h1>
 							ELEKTRO INSTALACIJE
 							</h1>
+							<hr>
 							<ul>
 								<li>Profesionalno</li>
 								<li>Kvalitetno</li>
 								<li>Pouzdano</li>
 							</ul>
 						</div>
-						<div class="content-showcase inactive" data-scroll data-scroll-offset=50>
+						<div class="content-showcase inactive" data-scroll data-scroll-offset=-300>
 							<div class="content-showcase-image-wrapper">
 								<img src="images/showcase/uzemljenje.webp">
 							</div>
 							<h1>
 							POSTAVLJANJE UZEMLJENJA
 							</h1>
+							<hr>
 							<ul>
 								<li>Provereno</li>
 								<li>Sigurno</li>
 								<li>Brza usluga</li>
 							</ul>
 						</div>
-						<div class="content-showcase inactive" data-scroll data-scroll-offset=50>
+						<div class="content-showcase inactive" data-scroll data-scroll-offset=-300>
 							<div class="content-showcase-image-wrapper">
 								<img src="images/showcase/osiguraci.webp">
 							</div>
 							<h1>
 							UGRADNJA OSIGURACA
 							</h1>
+							<hr>
 							<ul>
 								<li>Tačno</li>
 								<li>Poverljivo</li>
 								<li>Po standardu</li>
 							</ul>
 						</div>
-						<div class="content-showcase inactive" data-scroll data-scroll-offset=50>
+						<div class="content-showcase inactive" data-scroll data-scroll-offset=-300>
 							<div class="content-showcase-image-wrapper">
 								<img src="images/showcase/galanterija.webp">
 							</div>
 							<h1>
 							MONTIRANJE GALANTERIJE
 							</h1>
+							<hr>
 							<ul>
 								<li>Funkcionalno</li>
 								<li>Modularno</li>
 								<li>Uredno</li>
 							</ul>
 						</div>
-						<div class="content-showcase inactive" data-scroll data-scroll-offset=50>
+						<div class="content-showcase inactive" data-scroll data-scroll-offset=-300>
 							<div class="content-showcase-image-wrapper">
 								<img src="images/showcase/svetlo.webp">
 							</div>
 							<h1>
 							RASVETNI PROGRAM
 							</h1>
+							<hr>
 							<ul>
 								<li>Stambeni</li>
 								<li>Dekorativni</li>
@@ -143,9 +146,9 @@
 							</ul>
 						</div>
 					</div>
-					<h1 id="also-offer" data-scroll>Takođe pružamo</h1>
+					<h1 id="also-offer" data-scroll data-scroll-offset=-400>Takođe pružamo</h1>
 					<div id="content-articles">
-						<article data-scroll class="left">
+						<article data-scroll data-scroll-offset=-300 class="left">
 							<div class="wrapper">
 								<h1>Crevarenje betonske ploce</h1>
 								<hr>
@@ -155,7 +158,7 @@
 								</div>
 							</div>
 						</article>
-						<article data-scroll class="right">
+						<article data-scroll data-scroll-offset=-300 class="right">
 							<div class="wrapper">
 								<h1>Drugi primer</h1>
 								<hr>

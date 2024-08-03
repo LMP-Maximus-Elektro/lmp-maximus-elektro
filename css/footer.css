@@ -46,6 +46,7 @@ footer.inactive a
 	justify-content: space-evenly;
 	width: 100%;
 	background: rgb(24, 24, 24);
+	border-top: 2px solid var(--content-color-orange);
 }
 
 #footer-contact

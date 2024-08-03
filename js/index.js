@@ -288,7 +288,7 @@ function showScrollElement(el, show)
 
 function isWithinScroll(el, offset = 0)
 {
-	if (window.scrollY > el.el.getBoundingClientRect().top - el.offset)
+	if (window.screenTop > el.el.getBoundingClientRect().top - window.innerHeight - el.offset)
 	{
 		return true;
 	}
@@ -303,7 +303,8 @@ function initialize()
 {
 	initHeaderFooter();
 	document.getElementById("content").style.paddingTop = headerSize;
-	document.getElementById("content-slides-background").style.top = headerSize;
+	
+	document.querySelector(":root").style.setProperty("--header-height", headerSize.toString() + "px");
 	
 	initScroll();
 	
