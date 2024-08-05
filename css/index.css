@@ -127,17 +127,17 @@ body
 
 #content-slides-buttons .active
 {
-	width: 20px;
-	height: 20px;
-	border-radius: 10px;
+	width: 26px;
+	height: 26px;
+	border-radius: 13px;
 	background-color: #fff601;
 }
 
 #content-slides-buttons .inactive
 {
-	width: 12px;
-	height: 12px;
-	border-radius: 6px;
+	width: 18px;
+	height: 18px;
+	border-radius: 9px;
 	background-color: #ff5923;
 }
 
