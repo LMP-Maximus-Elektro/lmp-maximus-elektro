@@ -109,3 +109,49 @@ footer.inactive a
 	position: static;
 	width: 100%;
 }
+
+#footer-return-to-top
+{
+	pointer-events: auto;
+	position: fixed;
+	bottom: 80px;
+	right: 0px;
+	margin: 20px;
+	width: 60px;
+	height: 60px;
+	background-color: var(--content-color-dark);
+	border-radius: 10px;
+	display: flex;
+	justify-content: center;
+	opacity: 0.5;
+	transform: scale(0.8);
+	
+	transition: all 0.2s;
+}
+
+#footer-return-to-top:hover.active
+{
+	opacity: 1;
+	transform: scale(1) translate(0px, 0px);
+}
+
+#footer-return-to-top.inactive
+{
+	opacity: 0;
+	transform: translate(80px, 0px);
+}
+
+#footer-return-to-top img
+{
+	display: block;
+	margin: auto;
+	width: 40%;
+	height: 50%;
+	transition: all 0.2s;
+}
+
+#footer-return-to-top:hover.active img
+{
+	width: 70%;
+	height: 80%;
+}
