@@ -1,0 +1,57 @@
+:root
+{
+	--content-color-dark: rgb(20, 20, 20);
+	--content-color-dark-transparent: rgba(20, 20, 20, 0.9);
+	--content-color-orange: #ff5923;
+	--content-color-yellow: #fff601;
+}
+
+#page-background
+{
+	z-index: -10;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	margin-left: auto;
+	margin-right: auto;
+	display: flex;
+	justify-content: center;
+	overflow: hidden;
+}
+
+#page-background img
+{
+	height: 100%;
+	position: fixed;
+}
+
+body
+{
+	margin: 0px;
+	font-family: sans-serif;
+}
+
+#content
+{
+	width: 100%;
+	min-height: 120%;
+}
+
+#content-wrapper
+{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+#content-background
+{
+	z-index: -1;
+	position: fixed;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	background: var(--content-color-dark);
+	opacity: 0.3;
+}

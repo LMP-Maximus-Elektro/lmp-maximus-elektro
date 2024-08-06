@@ -3,19 +3,22 @@
 		<title>
 		LMP Elektor Maximus
 		</title>
-		<link rel="stylesheet" href="css/index.css">
+		<link rel="icon" type="image/x-icon" href="images/icon.png">
+		<link rel="stylesheet" href="css/global.css">
 		<link rel="stylesheet" href="css/header.css">
 		<link rel="stylesheet" href="css/footer.css">
+		<link rel="stylesheet" href="css/index.css">
 		<meta charset="UTF-8">
 		<meta name="description" content="Elektro Instalacije Srbija">
-		<meta name="keywords" content="elektro instalacije, rasveta">
+		<meta name="keywords" content="elektro instalacije, ugradnja rasvete, rasveta, stambene elektro instalacije">
 		<meta name="author" content="Nikola Zagorac">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		
+		<script src="js/global.js"></script>
+		<script src="js/headerFooter.js"></script>
 		<script src="js/index.js"></script>
 	</head>
 
-	<body onload="initialize()" onscroll="handleScroll()">
+	<body onload="initScroll();initHeaderFooter();initContent();initSlides();" onscroll="handleScroll();handleScrollFooter();">
 		<header>
 			<div id="header-background"><img src="images/header-background.webp"></div>
 			<div id="header-logo-wrapper">
@@ -29,7 +32,7 @@
 			</div>
 			
 			<div id="nav-wrapper">
-				<nav class="nav-header"><a href="home.html">Početna</a></nav>
+				<nav class="nav-header"><a href="index.html">Početna</a></nav>
 				
 				<div class="nav-separator">・</div>
 				<nav class="nav-header"><a href="contact.html">Kontakt</a></nav>
@@ -55,9 +58,9 @@
 						</div>
 					</div>
 					<div id="content-slides-transition">
-						<div class="content-slides-transition-block"></div>
-						<div class="content-slides-transition-block"></div>
-						<div class="content-slides-transition-block"></div>
+						<div class="content-slides-transition-block inactive"></div>
+						<div class="content-slides-transition-block inactive"><img src="images/logo.webp"></div>
+						<div class="content-slides-transition-block inactive"></div>
 					</div>
 					<div class="content-slide">
 						<div class="text">
@@ -73,102 +76,106 @@
 					</div>
 				</div>
 				<div id="content-showcase">
-					<h1 data-scroll id="content-offers-header">U našoj ponudi</h1>
-					<div class="elements">
-						<div class="content-showcase inactive" data-scroll data-scroll-offset=-300>
-							<div class="content-showcase-image-wrapper">
-								<img src="images/showcase/instalacije.webp">
-							</div>
-							<h1>
-							ELEKTRO INSTALACIJE
-							</h1>
-							<hr>
-							<ul>
-								<li>Profesionalno</li>
-								<li>Kvalitetno</li>
-								<li>Pouzdano</li>
-							</ul>
-						</div>
-						<div class="content-showcase inactive" data-scroll data-scroll-offset=-300>
-							<div class="content-showcase-image-wrapper">
-								<img src="images/showcase/uzemljenje.webp">
-							</div>
-							<h1>
-							POSTAVLJANJE UZEMLJENJA
-							</h1>
-							<hr>
-							<ul>
-								<li>Provereno</li>
-								<li>Sigurno</li>
-								<li>Brza usluga</li>
-							</ul>
-						</div>
-						<div class="content-showcase inactive" data-scroll data-scroll-offset=-300>
-							<div class="content-showcase-image-wrapper">
-								<img src="images/showcase/osiguraci.webp">
-							</div>
-							<h1>
-							UGRADNJA OSIGURACA
-							</h1>
-							<hr>
-							<ul>
-								<li>Tačno</li>
-								<li>Poverljivo</li>
-								<li>Po standardu</li>
-							</ul>
-						</div>
-						<div class="content-showcase inactive" data-scroll data-scroll-offset=-300>
-							<div class="content-showcase-image-wrapper">
-								<img src="images/showcase/galanterija.webp">
-							</div>
-							<h1>
-							MONTIRANJE GALANTERIJE
-							</h1>
-							<hr>
-							<ul>
-								<li>Funkcionalno</li>
-								<li>Modularno</li>
-								<li>Uredno</li>
-							</ul>
-						</div>
-						<div class="content-showcase inactive" data-scroll data-scroll-offset=-300>
-							<div class="content-showcase-image-wrapper">
-								<img src="images/showcase/svetlo.webp">
-							</div>
-							<h1>
-							RASVETNI PROGRAM
-							</h1>
-							<hr>
-							<ul>
-								<li>Stambeni</li>
-								<li>Dekorativni</li>
-								<li>Ulični</li>
-							</ul>
-						</div>
-					</div>
-					<h1 id="also-offer" data-scroll data-scroll-offset=-400>Takođe pružamo</h1>
-					<div id="content-articles">
-						<article data-scroll data-scroll-offset=-300 class="left">
-							<div class="wrapper">
-								<h1>Crevarenje betonske ploce</h1>
-								<hr>
-								<div class="text">
-									<img src="images/test/test1.jpg">
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam scelerisque leo vel nibh facilisis convallis. Etiam sed metus est. Suspendisse et fermentum eros. Pellentesque posuere consectetur quam, nec euismod nibh viverra sed. Praesent consectetur turpis ac semper placerat. Nulla et ullamcorper augue. Phasellus consequat dictum mi id ultricies. Mauris mattis lacus eget pellentesque tincidunt. Maecenas pellentesque sapien lectus, in euismod dui tempor sit amet.</p>
+					<section id="content-offers">
+						<h1 data-scroll data-scroll-offset=-300 id="content-offers-header">U našoj ponudi</h1>
+						<div class="elements">
+							<div class="content-showcase inactive" data-scroll data-scroll-offset=-300>
+								<div class="content-showcase-image-wrapper">
+									<img src="images/showcase/instalacije.webp">
 								</div>
-							</div>
-						</article>
-						<article data-scroll data-scroll-offset=-300 class="right">
-							<div class="wrapper">
-								<h1>Drugi primer</h1>
+								<h1>
+								ELEKTRO INSTALACIJE
+								</h1>
 								<hr>
-								<div class="text">
-									<img src="images/test/test1.jpg">
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam scelerisque leo vel nibh facilisis convallis. Etiam sed metus est. Suspendisse et fermentum eros. Pellentesque posuere consectetur quam, nec euismod nibh viverra sed. Praesent consectetur turpis ac semper placerat. Nulla et ullamcorper augue. Phasellus consequat dictum mi id ultricies. Mauris mattis lacus eget pellentesque tincidunt. Maecenas pellentesque sapien lectus, in euismod dui tempor sit amet.</p>
-								</div>
+								<ul>
+									<li>Profesionalno</li>
+									<li>Kvalitetno</li>
+									<li>Pouzdano</li>
+								</ul>
 							</div>
-						</article>
-					</div>
+							<div class="content-showcase inactive" data-scroll data-scroll-offset=-300>
+								<div class="content-showcase-image-wrapper">
+									<img src="images/showcase/uzemljenje.webp">
+								</div>
+								<h1>
+								POSTAVLJANJE UZEMLJENJA
+								</h1>
+								<hr>
+								<ul>
+									<li>Provereno</li>
+									<li>Sigurno</li>
+									<li>Brza usluga</li>
+								</ul>
+							</div>
+							<div class="content-showcase inactive" data-scroll data-scroll-offset=-300>
+								<div class="content-showcase-image-wrapper">
+									<img src="images/showcase/osiguraci.webp">
+								</div>
+								<h1>
+								UGRADNJA OSIGURACA
+								</h1>
+								<hr>
+								<ul>
+									<li>Tačno</li>
+									<li>Poverljivo</li>
+									<li>Po standardu</li>
+								</ul>
+							</div>
+							<div class="content-showcase inactive" data-scroll data-scroll-offset=-300>
+								<div class="content-showcase-image-wrapper">
+									<img src="images/showcase/galanterija.webp">
+								</div>
+								<h1>
+								MONTIRANJE GALANTERIJE
+								</h1>
+								<hr>
+								<ul>
+									<li>Funkcionalno</li>
+									<li>Modularno</li>
+									<li>Uredno</li>
+								</ul>
+							</div>
+							<div class="content-showcase inactive" data-scroll data-scroll-offset=-300>
+								<div class="content-showcase-image-wrapper">
+									<img src="images/showcase/svetlo.webp">
+								</div>
+								<h1>
+								RASVETNI PROGRAM
+								</h1>
+								<hr>
+								<ul>
+									<li>Stambeni</li>
+									<li>Dekorativni</li>
+									<li>Ulični</li>
+								</ul>
+							</div>
+						</div>
+					</section>
+					<section id="content-articles">
+						<h1 id="also-offer" data-scroll data-scroll-offset=-400>Takođe pružamo</h1>
+						<div class="elements">
+							<article data-scroll data-scroll-offset=-300 class="left">
+								<div class="wrapper">
+									<h1>Crevarenje betonske ploce</h1>
+									<hr>
+									<div class="text">
+										<img src="images/test/test1.jpg">
+										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam scelerisque leo vel nibh facilisis convallis. Etiam sed metus est. Suspendisse et fermentum eros. Pellentesque posuere consectetur quam, nec euismod nibh viverra sed. Praesent consectetur turpis ac semper placerat. Nulla et ullamcorper augue. Phasellus consequat dictum mi id ultricies. Mauris mattis lacus eget pellentesque tincidunt. Maecenas pellentesque sapien lectus, in euismod dui tempor sit amet.</p>
+									</div>
+								</div>
+							</article>
+							<article data-scroll data-scroll-offset=-300 class="right">
+								<div class="wrapper">
+									<h1>Drugi primer</h1>
+									<hr>
+									<div class="text">
+										<img src="images/test/test1.jpg">
+										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam scelerisque leo vel nibh facilisis convallis. Etiam sed metus est. Suspendisse et fermentum eros. Pellentesque posuere consectetur quam, nec euismod nibh viverra sed. Praesent consectetur turpis ac semper placerat. Nulla et ullamcorper augue. Phasellus consequat dictum mi id ultricies. Mauris mattis lacus eget pellentesque tincidunt. Maecenas pellentesque sapien lectus, in euismod dui tempor sit amet.</p>
+									</div>
+								</div>
+							</article>
+						</div>
+					</section>
 				</div>
 			</div>
 		</section>
