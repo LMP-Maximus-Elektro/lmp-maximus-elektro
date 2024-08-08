@@ -1,0 +1,38 @@
+#content-who
+{
+	padding: 30px;
+	margin: 80px 100px 10px 100px;
+	color: white;
+	background-color: var(--content-color-dark-transparent);
+	border-radius: 5px;
+}
+
+#content-who h1
+{
+	font-size: 30px;
+	margin: 0px;
+}
+
+#content-who p
+{
+	font-size: 20px;
+}
+
+#content-who-p-wrapper
+{
+	display: inline;
+}
+
+#content-who-img-wrapper
+{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 600px;
+	height: 600px;
+}
+
+#content-who-img-wrapper img
+{
+	width: 100%;
+}
