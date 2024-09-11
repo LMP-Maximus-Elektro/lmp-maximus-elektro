@@ -1,211 +1,340 @@
 <html>
-	<head>
-		<title>
-		LMP Maximus Elektro
-		</title>
-		<link rel="icon" type="image/x-icon" href="images/icon.png">
-		<link rel="stylesheet" href="css/global.css">
-		<link rel="stylesheet" href="css/header.css">
-		<link rel="stylesheet" href="css/footer.css">
-		<link rel="stylesheet" href="css/index.css">
-		<meta charset="UTF-8">
-		<meta name="description" content="Elektro Instalacije Srbija">
-		<meta name="keywords" content="elektro instalacije, ugradnja rasvete, rasveta, stambene elektro instalacije">
-		<meta name="author" content="Nikola Zagorac">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<script src="js/global.js"></script>
-		<script src="js/headerFooter.js"></script>
-		<script src="js/index.js"></script>
-	</head>
 
-	<body onload="initScroll();initHeaderFooter();initContent();initSlides();" onscroll="handleScroll();handleScrollFooter();">
-		<header>
-			<div id="header-background"><img src="images/header-background.webp"></div>
-			<div id="header-logo-wrapper">
-				<div id="header-logo-box-wrapper">
-					<div id="header-logo-box"></div>
-				</div>
-				<div id="header-logo-circle-wrapper">
-					<div id="header-logo-circle"></div>
-				</div>
-				<img src="images/logo.webp">
-			</div>
-			
-			<div id="nav-wrapper">
-				<nav class="nav-header"><a href="index.html">Početna</a></nav>
-				
-				<div class="nav-separator">・</div>
-				<nav class="nav-header"><a href="contact.html">Kontakt</a></nav>
-				
-				<div class="nav-separator">・</div>
-				<nav class="nav-header"><a href="about.html">O nama</a></nav>
-				
-				<div class="nav-separator">・</div>
-				<nav class="nav-header"><a href="questions.html">Česta pitanja</a></nav>
-			</div>
-		</header>
-		<section id="content">
-			<div id="content-wrapper">
-				<div id="content-background"></div>
-				<div id="content-slides">
-					<div id="content-slides-controls">
-						<div id="content-slides-previous" onclick="previousSlide()"></div>
-						<div id="content-slides-next" onclick="nextSlide()"></div>
-						<div id="content-slides-buttons">
-							<div onclick="changeSlide(0)" class="element"></div>
-							<div onclick="changeSlide(1)" class="element"></div>
-							<div onclick="changeSlide(2)" class="element"></div>
-						</div>
-					</div>
-					<div id="content-slides-transition">
-						<div class="content-slides-transition-block inactive"></div>
-						<div class="content-slides-transition-block inactive"><img src="images/logo.webp"></div>
-						<div class="content-slides-transition-block inactive"></div>
-					</div>
-					<div class="content-slide">
-						<div class="text">
-							<div class="header">Resenja za sve probleme . . .</div>
-						</div>
-						<img src="images/slides/fixing.jpg">
-					</div>
-					<div class="content-slide">
-						<img src="images/slides/installations.jpg">
-					</div>
-					<div class="content-slide">
-						<img src="images/slides/lighting.jpg">
-					</div>
-				</div>
-				<div id="content-showcase">
-					<section id="content-offers">
-					<h1 data-scroll data-scroll-offset=100 style="margin-bottom: 50px;">U našoj ponudi</h1>
-					<div id="content-showcase-background"></div>
-						<div class="elements">
-							<div class="content-showcase content-border inactive" data-scroll data-scroll-offset=200>
-								<div class="content-showcase-image-wrapper">
-									<img src="images/showcase/instalacije.webp">
-								</div>
-								<h1>
-								ELEKTRO INSTALACIJE
-								</h1>
-								<hr>
-								<ul>
-									<li>Profesionalno</li>
-									<li>Kvalitetno</li>
-									<li>Pouzdano</li>
-								</ul>
-							</div>
-							<div class="content-showcase content-border inactive" data-scroll data-scroll-offset=200>
-								<div class="content-showcase-image-wrapper">
-									<img src="images/showcase/uzemljenje.webp">
-								</div>
-								<h1>
-								POSTAVLJANJE UZEMLJENJA
-								</h1>
-								<hr>
-								<ul>
-									<li>Provereno</li>
-									<li>Sigurno</li>
-									<li>Brza usluga</li>
-								</ul>
-							</div>
-							<div class="content-showcase content-border inactive" data-scroll data-scroll-offset=200>
-								<div class="content-showcase-image-wrapper">
-									<img src="images/showcase/osiguraci.webp">
-								</div>
-								<h1>
-								UGRADNJA OSIGURACA
-								</h1>
-								<hr>
-								<ul>
-									<li>Tačno</li>
-									<li>Poverljivo</li>
-									<li>Po standardu</li>
-								</ul>
-							</div>
-							<div class="content-showcase content-border inactive" data-scroll data-scroll-offset=200>
-								<div class="content-showcase-image-wrapper">
-									<img src="images/showcase/galanterija.webp">
-								</div>
-								<h1>
-								MONTIRANJE GALANTERIJE
-								</h1>
-								<hr>
-								<ul>
-									<li>Funkcionalno</li>
-									<li>Modularno</li>
-									<li>Uredno</li>
-								</ul>
-							</div>
-							<div class="content-showcase content-border inactive" data-scroll data-scroll-offset=200>
-								<div class="content-showcase-image-wrapper">
-									<img src="images/showcase/svetlo.webp">
-								</div>
-								<h1>
-								RASVETNI PROGRAM
-								</h1>
-								<hr>
-								<ul>
-									<li>Stambeni</li>
-									<li>Dekorativni</li>
-									<li>Ulični</li>
-								</ul>
-							</div>
-						</div>
-					</section>
-					<section id="content-articles">
-						<h1 id="also-offer" data-scroll data-scroll-offset=-400>Takođe pružamo</h1>
-						<div class="elements">
-							<article data-scroll data-scroll-offset=-300 class="left">
-								<div class="wrapper">
-									<h1>Crevarenje betonske ploce</h1>
-									<hr>
-									<div class="text">
-										<img src="images/test/test1.jpg">
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam scelerisque leo vel nibh facilisis convallis. Etiam sed metus est. Suspendisse et fermentum eros. Pellentesque posuere consectetur quam, nec euismod nibh viverra sed. Praesent consectetur turpis ac semper placerat. Nulla et ullamcorper augue. Phasellus consequat dictum mi id ultricies. Mauris mattis lacus eget pellentesque tincidunt. Maecenas pellentesque sapien lectus, in euismod dui tempor sit amet.</p>
-									</div>
-								</div>
-							</article>
-							<article data-scroll data-scroll-offset=-300 class="right">
-								<div class="wrapper">
-									<h1>Drugi primer</h1>
-									<hr>
-									<div class="text">
-										<img src="images/test/test1.jpg">
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam scelerisque leo vel nibh facilisis convallis. Etiam sed metus est. Suspendisse et fermentum eros. Pellentesque posuere consectetur quam, nec euismod nibh viverra sed. Praesent consectetur turpis ac semper placerat. Nulla et ullamcorper augue. Phasellus consequat dictum mi id ultricies. Mauris mattis lacus eget pellentesque tincidunt. Maecenas pellentesque sapien lectus, in euismod dui tempor sit amet.</p>
-									</div>
-								</div>
-							</article>
-						</div>
-					</section>
-				</div>
-			</div>
-		</section>
-		<footer>
-			<div id="footer-return-to-top" onclick="returnToTopFunc()"><img src="images/top.webp"></div>
-			<div id="footer-distancer"></div>
-			<div id="footer-wrapper">
-				<div id="footer-background"><img src="images/footer-background.webp"></div>
-				<div id="footer-logo-wrapper">
-					<img src="images/logo-full.webp">
-				</div>
-				<div id="footer-contact">
-					<div class="footer-contact-item">
-						<img src="images/electric.png"/>
-						<span>ELEKTRO INSTALACIJE 2024</span>
-					</div>
-					<div class="footer-contact-item">
-						<img src="images/phone.png"/>
-						<span>+381 61 123 123</span>
-					</div>
-					<div class="footer-contact-item">
-						<img src="images/email.png"/>
-						<span><a href="mailto:lmpelektro@gmail.com">lmpelektro@gmail.com</a></span>
-					</div>
-				</div>
-			</div>
-		</footer>
-		<div id="page-background">
-			<img src="images/content-background.webp">
+<head>
+	<title>LMP Maximus Elektro</title>
+	<meta charset="UTF-8">
+	<link rel="icon" type="image/x-icon" href="images/icons/icon.png">
+	<meta name="theme-color" content="black">
+	<meta name="author" content="Nikola Zagorac">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Elektro Instalacije Srbija">
+	<meta name="keywords" content="elektro instalacije, ugradnja rasvete, rasveta, stambene elektro instalacije">
+
+	<link rel="stylesheet" href="css/global.css">
+	<link rel="stylesheet" href="css/header.css">
+	<link rel="stylesheet" href="css/footer.css">
+	<link rel="stylesheet" href="css/index.css">
+	<link rel="stylesheet" href="css/gallery.css">
+
+	<script src="js/global.js"></script>
+	<script src="js/popups.js"></script>
+	<script src="js/hiddenWindow.js"></script>
+	<script src="js/gallery.js"></script>
+	<script src="js/headerFooter.js"></script>
+	<script src="js/index.js"></script>
+
+	<script src="
+	https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js">
+	</script>
+</head>
+
+<body onload="initScroll();initContent();initSlides();" onscroll="handleScroll();">
+	<header>
+		<div class="logo">
+			<img src="images/logo.webp">
 		</div>
-	</body>
+		<div class="text-logo">
+			<img src="images/logo-text.png">
+		</div>
+		<nav class="navigation">
+			<a href="index.html">Početna</a>
+			<div class="separator">・</div>
+			<a href="contact.html">Kontakt</a>
+			<div class="separator">・</div>
+			<a href="about.html">O nama</a>
+		</nav>
+		<div class="hamburger active">
+			<div class="active">
+				<div class="element left"></div>
+				<div class="element right"></div>
+				<div class="element left"></div>
+			</div>
+			<div class="inactive">
+				<div class="element left"></div>
+				<div class="element right"></div>
+				<div class="element left"></div>
+			</div>
+		</div>
+		<nav class="hamburger-menu inactive">
+			<a href="index.html">Početna</a>
+			<a href="contact.html">Kontakt</a>
+			<a href="about.html">O nama</a>
+		</nav>
+	</header>
+	<div id="gallery-preview">
+		<div id="gallery-preview-background"></div>
+		<div class="wrapper">
+			<h1></h1>
+			<div class="wrapper-images"><img></div>
+			<div class="wrapper-controls">
+				<div class="button last"></div>
+				<div class="button next"></div>
+				<div class="button close"></div>
+			</div>
+		</div>
+	</div>
+	<section id="slideshow">
+		<div id="slideshow-slides">
+			<picture class="active">
+				<source srcset="images/slides/slideshow-elektro.jpg" media="(max-width: 768px)">
+				<source srcset="images/slides/slideshow-elektro.jpg" media="(min-width: 768px) and (max-width: 1920px)">
+				<img src="images/slides/slideshow-elektro.jpg">
+			</picture>
+			<picture class="active">
+				<source srcset="images/slides/slideshow-elektro.jpg" media="(max-width: 768px)">
+				<source srcset="images/slides/slideshow-elektro.jpg" media="(min-width: 768px) and (max-width: 1920px)">
+				<img src="images/slides/slideshow-elektro.jpg">
+			</picture>
+		</div>
+		<div id="slideshow-controls">
+			<div id="slideshow-previous" onclick="previousSlide()"></div>
+			<div id="slideshow-next" onclick="nextSlide()"></div>
+			<div id="slideshow-buttons"></div>
+		</div>
+		<div id="slideshow-transition">
+			<div class="inactive"></div>
+			<div class="inactive"><img src="images/logo.webp"></div>
+			<div class="inactive"></div>
+		</div>
+	</section>
+	<section id="offers">
+		<div class="hidden-window left">
+			<div class="wrapper">
+				<h2>Pozovite nas danas!</h2>
+				<div class="content">
+					<h2>Pozovite nas danas!</h2>
+					<p>
+						Nemojte da čekate, ugovorite Vaše radove još danas!
+						Mi smo na raspolaganju kao Vaš pouzdan partner
+						u kompletnom izvođenju elektro instalacija.
+						Zidate kuću? Ili možda renovirate stan?
+						Imamo rešenja za sve!
+					</p>
+					<a href="tel:+38162255533">Kontakt telefon +381 62 25-55-33</a>
+					<div class="button close">
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<div data-scroll data-scroll-offset=200 class="header">
+			<h1>REŠENJA PRILAGOĐENA VAŠIM POTREBAMA</h1>
+		</div>
+		<article class="inactive" data-scroll data-scroll-offset=300>
+			<img src="images/showcase/instalacije.webp">
+			<div class="content">
+				<h1>
+					ELEKTRO INSTALACIJE
+				</h1>
+				<hr>
+				<p>
+					Naša kompanija nudi kompletan spektar elektro i energetskih instalacija.
+					Stručno izvodimo radove u novim i renoviranim objektima, od pripreme prostora,
+					preko polaganja kablova i pripremanja pozicija instalacionih elemenata,
+					do finih završnih radova, zatvaranja, odnosno obezbeđivanja strujnih krugova
+					– stojimo Vam na raspolaganju.
+					<br>
+					Svaki projekat izvodimo s najvećom pažnjom,
+					poštujući važeće standarde i propise. Naš tim iskusnih električara garantuje
+					kvalitet i pouzdanost svakog izvedenog posla.
+				</p>
+			</div>
+			<div class="gallery pop-up-container">
+				<div class="pop-up top" data-scroll data-scroll-offset=200 data-scroll-mode="multiple"
+					data-scroll-direction="both">Pogledaj galeriju</div>
+				<div class="wrapper" data-gallery>
+					<img src="images/galleries/electro/electro-5.jpg" alt="Energetski razvod" class="active">
+					<img src="images/galleries/electro/electro-0.jpg" alt="Instalacije - Kuhinja">
+					<img src="images/galleries/electro/electro-1.jpg" alt="Instalacije - Kuhinja">
+					<img src="images/galleries/electro/electro-2.jpg" alt="Instalacije - Kuhinja">
+					<img src="images/galleries/electro/electro-3.jpg" alt="Instalacije - Dnevna soba">
+					<img src="images/galleries/electro/electro-4.jpg" alt="Instalacije - Dnevna soba">
+				</div>
+			</div>
+		</article>
+		<article class="offer inactive" data-scroll data-scroll-offset=300>
+			<img src="images/showcase/osiguraci.webp">
+			<div class="content">
+				<h1>
+					RAZVODNE TABLE I ORMARI
+				</h1>
+				<hr>
+				<p>
+					Uređaji za zaštitu električnih kola predstavljaju temelj svakog elektroenergetskog projekta.
+					Njihova primarna funkcija je obezbeđivanje sigurnog i neprekidnog rada električne instalacije.
+					Putem detekcije i brzog prekida strujnog kruga u slučaju kratkog spoja, preopterećenja,
+					strujnog udara ili drugih kvarova, ovi uređaji štite električne instalacije, opremu i,
+					što je najvažnije, ljudske živote. <br>
+					Upravo zbog ovakvog značaja, neophodno je da projektovanje
+					i instalaciju ovih sistema povjerite iskusnim električarima, kakvi su zaposleni u našoj kompaniji.
+				</p>
+			</div>
+			<div class="gallery">
+				<div class="wrapper" data-gallery>
+					<img src="images/galleries/breakers/breakers-0.jpg" alt="Razvodna tabla" class="active">
+					<img src="images/galleries/breakers/breakers-1.jpg" alt="Razvodna tabla">
+					<img src="images/galleries/breakers/breakers-2.jpg" alt="Elektro ormar">
+					<img src="images/galleries/breakers/breakers-3.jpg" alt="Elektro ormar">
+					<img src="images/galleries/breakers/breakers-4.jpg" alt="Elektro ormar">
+				</div>
+			</div>
+		</article>
+		<article class="offer inactive" data-scroll data-scroll-offset=300>
+			<img src="images/showcase/svetlo.webp">
+			<div class="content">
+				<h1>
+					RASVETNI PROGRAM
+				</h1>
+				<hr>
+				<p>
+					U oblasti rasvete, naša kompanija nudi vrhunska,
+					moderna rešenja koja kombinuju funkcionalnost i estetiku.
+					Primenom LED tehnologije ostvarujemo značajne uštede u potrošnji energije,
+					a korišćenjem senzora i dekorativne rasvete stvaramo ambijente
+					koji su istovremeno prijatni za boravak i rad. <br>
+					Za postizanje najvišeg stepena estetike neophodna je precizna instalacija,
+					koju izvode naši iskusni majstori sa dubokim poznavanjem tehničkih aspekata rasvete.
+					Naša ponuda obuhvata širok spektar usluga,
+					od rasvete stambenih i poslovnih objekata,
+					preko industrijske i komercijalne, do ulične rasvete.
+				</p>
+			</div>
+			<div class="gallery">
+				<div class="wrapper" data-gallery>
+					<img src="images/galleries/lighting/lighting-0.jpg" alt="Spušteni plafon" class="active">
+					<img src="images/galleries/lighting/lighting-1.jpg" alt="Spušteni plafon">
+				</div>
+			</div>
+		</article>
+		<article class="offer inactive" data-scroll data-scroll-offset=300>
+			<img src="images/showcase/galanterija.webp">
+			<div class="content">
+				<h1>
+					GALANTERIJA
+				</h1>
+				<hr>
+				<p>
+					Pedantnost i strpljenje su ključne karakteristike majstora
+					koji se bave montažom galanterije za elektroinstalacije.
+					Naša kompanija podstiče korišćenje modularne galanterije
+					kao optimalnog rešenja za savremene prostore.
+					Modularni sistem omogućava jednostavnu instalaciju,
+					zamenu i nadogradnju elemenata,
+					čime se postiže dugotrajnost i funkcionalnost instalacije.
+				</p>
+			</div>
+			<div class="gallery">
+				<div class="wrapper" data-gallery>
+					<img src="images/galleries/galant/galant-0.jpg" alt="Modularna rešenja" class="active">
+				</div>
+			</div>
+		</article>
+		<article class="offer inactive" data-scroll data-scroll-offset=300>
+			<img src="images/showcase/uzemljenje.webp">
+			<div class="content">
+				<h1>
+					UZEMLJENJE
+				</h1>
+				<hr>
+				<p>
+					Svesni važnosti rokova izgradnje Vaših objekata, nudimo brzo
+					i efikasno izvođenje radova na postavljanju uzemljenja i gromobrana.
+					Uz pomoć našeg iskusnog tima elektro inžinjera, garantujemo da će Vaš objekt
+					biti zaštićen od atmosferskog pražnjenja u najkraćem mogućem roku, bez ugrožavanja kvaliteta
+					završnih radova.
+					<br>
+					Uzemljenje, sastavljeno od provodnika, uređaja za rano startovanje i zemnih sondi,
+					je neophodan deo zaštite objekta od udara groma. Poštovanje svih relevantnih standarda
+					prilikom izvođenja uzemljenja osigurava efikasnu zaštitu od oštećenja i požara.
+				</p>
+			</div>
+			<div class="gallery">
+				<div class="wrapper" data-gallery>
+					<img src="images/galleries/lightning/lightning-0.jpg" alt="Atmosfersko pražnjenje" class="active">
+				</div>
+			</div>
+		</article>
+	</section>
+	<section id="content-partners">
+		<div id="content-partners-wrapper">
+
+		</div>
+	</section>
+	<section id="content-articles">
+		<div data-scroll data-scroll-offset=300 class="header">
+			<h1>DODATNE POGODNOSTI KOJE NUDIMO</h1>
+		</div>
+		<div id="content-articles-cover"></div>
+		<div class="elements">
+			<article data-scroll data-scroll-offset=300 class="left">
+				<div class="wrapper">
+					<h1>Crevarenje betonske ploče</h1>
+					<hr>
+					<div class="content">
+						<img src="images/articles/pipes.jpg">
+						<div class="text">
+							<p>
+								Ugradnja zaštitnih kanala (bužira) unutar plafonske konstrukcije,
+								neposredno pre izlivanja betonske ploče, predstavlja optimalno rešenje za stambene
+								objekte.
+								Ovakav pristup ostvaruje značajnu uštedu materijala i vremena,
+								dok istovremeno čuva strukturnu celovitost zidova, eliminišući potrebu za štemovanjem.
+								Instalacije se postavljaju u bužire, čime se osigurava dugotrajnost i funkcionalnost
+								sistema.
+							</p>
+							<div class="link-wrapper pop-up-container">
+								<a href="contact.html">Saznaj više</a>
+								<div class="pop-up right" data-scroll data-scroll-offset=200 data-scroll-mode="multiple"
+									data-scroll-direction="both">Kontaktirajte nas</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</article>
+			<article data-scroll data-scroll-offset=300 class="right">
+				<div class="wrapper">
+					<h1>Izrada elektro ormara</h1>
+					<hr>
+					<div class="content">
+						<img src="images/articles/breakers.jpg">
+						<div class="text">
+							<p>
+								U okviru svakog elektroenergetskog sistema,
+								elektro ormari obavljaju vitalnu ulogu u zaštiti
+								i distribuciji električne energije. Kvalitet
+								izrade elektro ormara direktno utiče na pouzdanost
+								i sigurnost celog sistema. Naša kompanija
+								specijalizovana je za proizvodnju elektro ormara
+								po najvišim standardima, osiguravajući klijentima
+								optimalan nivo zaštite i funkcionalnosti. Na taj
+								način, eliminišemo mogućnost nastanka kvarova i
+								svih pratećih problema koji mogu prouzrokovati
+								zastoje u poslovanju.
+							</p>
+							<div class="link-wrapper">
+								<a href="contact.html">Saznaj više</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</article>
+		</div>
+	</section>
+	<footer>
+		<div class="return-to-top" onclick="returnToTop()"><img src="images/icons/top.webp"></div>
+		<div class="distancer"></div>
+		<div class="wrapper">
+			<img class="decoration-image" src="images/extras/footer-background.webp">
+			<img class="logo" src="images/logo-full.webp">
+			<div class="contact">
+				<a class="tag" href="index.html" title="Početna stranica">ELEKTRO INSTALACIJE est. 2024</a>
+				<a class="phone" href="tel:+38162255533" title="Pritisni da pozoveš">+381 62 25-55-33</a>
+				<a class="mail" href="mailto:lmpelektro1@gmail.com" title="Pošalji mejl">lmpelektro1@gmail.com</a>
+				<a class="location" href="https://maps.app.goo.gl/D47H3y2ETfZX4BEV7"
+					title="Pogledaj lokaciju">Sevastokratora Branka 68 Batajnica</a>
+			</div>
+		</div>
+	</footer>
+</body>
+
 </html>

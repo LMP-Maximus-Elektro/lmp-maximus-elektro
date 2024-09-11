@@ -1,83 +1,62 @@
-header
-{
-	z-index: 10;
-	position: absolute;
+header {
 	width: 100%;
 	background: var(--content-color-dark);
 	display: flex;
 	flex-direction: row;
-	flex: flex-grow;
 	justify-content: center;
-	border-bottom: 2px solid var(--content-color-orange);
+	align-items: center;
+	position: relative;
 }
 
-#header-background
-{
-	position: absolute;
-	height: 100%;
-	right: 0px;
-}
-
-#header-background img
-{
-	height: 350px;
-	z-index: 5;
+header .text-logo {
 	display: none;
+	height: 50px;
 }
 
-#header-logo-wrapper
-{
-	z-index: 1;
+header .text-logo img {
+	height: 100%;
+}
+
+header .logo {
+	position: relative;
+
 	width: 80px;
 	height: 80px;
 	margin: 10px;
+	z-index: 1;
 }
 
-#header-logo-circle-wrapper
-{
+header .logo::after {
+	content: '';
 	position: absolute;
-	z-index: -2;
-}
+	z-index: 1;
 
-#header-logo-circle
-{
-	background: var(--content-color-dark);
-	opacity: 100%;
 	width: 150px;
 	height: 150px;
-	position: relative;
 	left: -35px;
 	top: -35px;
+
 	border-radius: 75px;
+	background-color: var(--content-color-dark);
 }
 
-#header-logo-box-wrapper
-{
+header .logo img {
+	width: 100%;
+	height: 100%;
+	top: -6px;
+	left: -6px;
+	padding: 6px;
+
 	position: absolute;
-	z-index: -1;
+	z-index: 2;
+
+	border-radius: 50%;
+	box-shadow: 0px 0px 20px var(--content-color-red);
+
+	transition: 0.2s box-shadow;
 }
 
-#header-logo-box
-{
-	background: var(--content-color-dark);
-	opacity: 90%;
-	width: 90px;
-	height: 90px;
-	position: relative;
-	left: -5px;
-	top: -5px;
-	border-radius: 45px;
-	box-shadow: 0px 0px 20px red;
-}
-
-#header-logo-wrapper img 
-{
-	width: 80px;
-	height: 80px;
-}
-
-#nav-wrapper
-{
+header .navigation {
 	margin-left: 15px;
 	padding: 5px;
 	display: flex;
@@ -85,8 +64,7 @@ header
 	align-items: center;
 }
 
-.nav-separator
-{
+header .navigation .separator {
 	font-size: 20px;
 	color: gray;
 	margin: 0px;
@@ -94,22 +72,247 @@ header
 	color: white;
 }
 
-.nav-header
-{
-	flex: flex-grow;
+header .navigation a {
 	margin: 5px 30px 5px 30px;
 	font-size: 15px;
-	color: white;
-}
-
-.nav-header a
-{
+	text-wrap: none;
 	color: white;
 	text-decoration: none;
 }
 
-.nav-header:hover
-{
-	transform: translate(0px, -3px);
-	transform: scale(107%);
+header .hamburger {
+	--animation-duration: 0.6s;
+	--right-position: 30px;
+	display: none;
+	position: absolute;
+	top: 33%;
+	right: 0px;
+
+	transform: scale(1.2);
+}
+
+header .hamburger .active {
+	position: absolute;
+	right: var(--right-position);
+	top: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+header .hamburger .active .element {
+	width: 36px;
+	height: 4px;
+	border-radius: 4px;
+	background-color: var(--content-color-orange);
+}
+
+header .hamburger.active .active .element {
+	transform: scaleX(1);
+	transition: calc(var(--animation-duration) / 2) transform calc(var(--animation-duration) / 2);
+}
+
+header .hamburger.inactive .active .element {
+	transform: scaleX(0);
+	transition: calc(var(--animation-duration) / 2) transform;
+}
+
+header .hamburger .active .left {
+	transform-origin: left;
+}
+
+header .hamburger .active .right {
+	transform-origin: right;
+}
+
+header .hamburger .inactive {
+	position: absolute;
+	right: var(--right-position);
+	top: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+header .hamburger .inactive .element {
+	width: 36px;
+	height: 4px;
+	border-radius: 4px;
+	background-color: var(--content-color-yellow);
+}
+
+header .hamburger.active .inactive .element {
+	transform: scaleX(0);
+	transition: calc(var(--animation-duration) / 2) transform;
+}
+
+header .hamburger.inactive .inactive .element {
+	transform: scaleX(1);
+	transition: calc(var(--animation-duration) / 2) transform calc(var(--animation-duration) / 2);
+}
+
+header .hamburger .inactive .left {
+	transform-origin: right;
+}
+
+header .hamburger .inactive .right {
+	transform-origin: left;
+}
+
+header .hamburger-menu {
+	position: absolute;
+	z-index: 10;
+	right: 30px;
+	top: 100%;
+	gap: 15px;
+	padding: 15px 20px 15px 25px;
+
+	display: none;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: end;
+
+	transform-origin: top;
+	border-radius: 10px 0px 10px 10px;
+	border: 1px solid var(--content-color-orange);
+	background-color: var(--content-color-dark);
+
+	transition: all 0.5s;
+}
+
+header .hamburger-menu a {
+	color: white;
+	text-decoration: none;
+	font-size: 18px;
+}
+
+header .hamburger-menu a:active {
+	color: var(--content-color-red);
+}
+
+@media (hover: hover) {
+	header {
+		width: 100%;
+		background: var(--content-color-dark);
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+	}
+
+	header .logo img:hover {
+		box-shadow: 0px 0px 20px var(--content-color-yellow);
+	}
+
+	header .navigation a:hover {
+		transform: translate(0px, -3px);
+		transform: scale(107%);
+	}
+}
+
+@media screen and (min-width: 1024px) {
+	header .text-logo {
+		display: block;
+		padding-left: 25px;
+	}
+}
+
+@media screen and (max-width: 1024px) {
+	header .logo::after {
+		width: 134px;
+		height: 134px;
+		left: -28px;
+		top: -28px;
+	
+		border-radius: 50%;
+		background-color: var(--content-color-dark);
+	}
+	
+}
+
+@media screen and (max-width: 768px) {
+	header {
+		justify-content: flex-start;
+		align-items: center;
+
+		gap: 25px;
+	}
+
+	header .text-logo {
+		display: block;
+		padding: 0px;
+	}
+
+	header .logo {
+		width: 60px;
+	  	height: 60px;
+		padding: 10px;
+		margin-left: 50px;
+	}
+
+	header .logo img {
+		box-shadow: none;
+	}
+
+	header .logo::after {
+		display: none;
+	}	
+
+	header .hamburger {
+		display: block;
+	}
+
+	header .hamburger-menu {
+		display: flex;
+	}
+
+	header .hamburger-menu.inactive {
+		transform: scaleY(0);
+		opacity: 0;
+	}
+
+	header .hamburger-menu.active {
+		transform: scaleY(1);
+		opacity: 1;
+	}
+
+	header .navigation {
+		display: none;
+	}
+}
+
+@media screen and (max-width: 425px) {
+	header {
+		gap: 5px;
+	}
+
+	header .logo {
+		margin-left: 25px;
+	}
+
+	header .text-logo {
+		height: 40px;
+	}
+}
+
+@media screen and (max-width: 375px) {
+	header .hamburger {
+		transform: scale(1);
+	}
+
+	header .logo-wrapper .logo {
+		width: 50px;
+		height: 50px;
+	}
+}
+
+@media screen and (max-width: 320px) {
+	header .logo {
+		margin-left: 15px;
+	}
+
+	header .logo {
+		width: 40px;
+		height: 40px;
+	}
 }

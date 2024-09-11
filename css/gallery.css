@@ -1,0 +1,121 @@
+#gallery-preview {
+    --image-size: 600px;
+
+    position: fixed;
+    z-index: 30;
+
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    pointer-events: none;
+
+    opacity: 0;
+    transition: all 0.4s;
+}
+
+#gallery-preview-background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+
+    opacity: 0.9;
+    background-color: var(--content-color-dark);
+}
+
+#gallery-preview.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+#gallery-preview .wrapper {
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+    padding: 10px 25px 10px 25px;
+    z-index: 2;
+
+    border-radius: 5px;
+    border: 1px solid var(--content-color-orange);
+
+    color: white;
+    background-color: var(--content-color-dark);
+}
+
+#gallery-preview .wrapper h1 {
+    font-size: 22px;
+    font-weight: normal;
+    margin: 0px 0px 0px 10px;
+}
+
+#gallery-preview .wrapper .wrapper-images {
+    width: var(--image-size);
+    height: var(--image-size);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 5px;
+    overflow: hidden;
+    border: 1px solid var(--content-color-orange);
+}
+
+#gallery-preview .wrapper .wrapper-images img {
+    max-width: var(--image-size);
+    max-height: var(--image-size);
+    object-fit: contain;
+    display: block;
+}
+
+#gallery-preview .wrapper .wrapper-controls {
+    --button-size: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#gallery-preview .wrapper .wrapper-controls .button {
+    width: var(--button-size);
+    height: var(--button-size);
+    padding: 5px;
+
+    border-radius: 5px;
+    border: 1px solid var(--content-color-orange);
+
+    background-size: var(--button-size);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#gallery-preview .wrapper .wrapper-controls .button:active {
+    background-size: calc(var(--button-size) - 5px);
+}
+
+#gallery-preview .wrapper .wrapper-controls .button.next {
+    background-image: url("../images/icons/right-arrow.webp");
+}
+
+#gallery-preview .wrapper .wrapper-controls .button.last {
+    background-image: url("../images/icons/right-arrow.webp");
+    transform: rotate(0.5turn);
+}
+
+#gallery-preview .wrapper .wrapper-controls .button.close {
+    background-image: url("../images/icons/close-button.webp");
+}
+
+@media (hover: hover) {
+    #gallery-preview .wrapper .wrapper-controls .button:hover {
+        border-color: var(--content-color-yellow);
+    }
+}

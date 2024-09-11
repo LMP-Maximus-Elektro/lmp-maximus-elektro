@@ -1,57 +1,451 @@
-:root
-{
+:root {
 	--content-color-dark: rgb(20, 20, 20);
 	--content-color-dark-transparent: rgba(20, 20, 20, 0.9);
 	--content-color-orange: #ff5923;
 	--content-color-yellow: #fff601;
+	--content-color-red: #c00202;
+
+	scroll-behavior: smooth;
 }
 
-#page-background
-{
-	z-index: -10;
-	top: 0px;
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	margin-left: auto;
-	margin-right: auto;
-	display: flex;
-	justify-content: center;
-	overflow: hidden;
+@font-face {
+	font-family: "open-sans-regular";
+	src: url("../OpenSans-Regular.ttf");
+	font-weight: normal;
 }
 
-#page-background img
-{
-	height: 100%;
-	position: fixed;
-}
-
-body
-{
+body {
 	margin: 0px;
-	font-family: sans-serif;
+	padding: 0px;
+
+	position: relative;
+	font-family: "open-sans-regular";
+	overflow-x: hidden;
 }
 
-#content
-{
+body::after {
+	content: '';
+	position: fixed;
+	z-index: -10;
+	height: 100%;
 	width: 100%;
-	min-height: 120%;
+	left: 0px;
+	top: 0px;
+
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	background-image: url("../images/content-background.webp");
 }
 
-#content-wrapper
-{
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-}
-
-#content-background
-{
+#content-background {
+	overflow-x: hidden;
 	z-index: -1;
 	position: fixed;
 	top: 0px;
+	left: 0px;
 	width: 100%;
 	height: 100%;
 	background: var(--content-color-dark);
 	opacity: 0.3;
+}
+
+/* section header */
+
+.header {
+	--header-animation-speed: 3.5s;
+
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+}
+
+.header h1 {
+	margin: 0px;
+	padding: 50px 0px 50px 0px;
+	font-size: 26px;
+
+	text-shadow: 3px 3px var(--content-color-dark);
+	color: white;
+	opacity: 0;
+
+	transition: opacity 1.5s;
+}
+
+@keyframes header-line-in {
+	from {
+		width: 0%;
+	}
+	to {
+		width: 100%;
+	}
+}
+
+@keyframes header-line-out {
+	from {
+		width: 100%;
+	}
+	to {
+		width: 0;
+	}
+}
+
+.header h1::after {
+	content: '';
+	display: block;
+	position: absolute;
+
+	left: 0px;
+	bottom: 30px;
+	height: 2px;
+	width: 0px;
+	opacity: 0.8;
+
+	background-color: var(--content-color-orange);
+}
+
+.header.active h1::after {
+	animation: header-line-in var(--header-animation-speed) ease-out 0s 1 forwards;
+}
+
+.header.inactive h1::after {
+	animation: header-line-out var(--header-animation-speed) ease-out 0s 1 forwards;
+}
+
+@keyframes header-dot-in {
+	from {
+		left: 0px;
+		bottom: 27px;
+		width: 6px;
+		height: 6px;
+		border-radius: 3px;
+	}
+	to {
+		left: 100%;
+		bottom: 15px;
+		width: 30px;
+		height: 30px;
+		border-radius: 15px;
+	}
+}
+
+@keyframes header-dot-out {
+	from {
+		left: 100%;
+	}
+	to {
+		left: 0px;
+	}
+}
+
+.header h1::before {
+	content: '';
+	display: block;
+	position: absolute;
+
+	left: 0px;
+	bottom: 22px;
+	width: 6px;
+	height: 6px;
+	border-radius: 3px;
+
+	background-color: var(--content-color-orange);
+	opacity: 0px;
+	transition: opacity 0.2s;
+}
+
+.header.active h1::before {
+	animation: header-dot-in var(--header-animation-speed) ease-out 0s 1 forwards;
+	opacity: 0.8;
+}
+
+.header.inactive h1::before {
+	animation: header-dot-out var(--header-animation-speed) ease-out 0s 1 forwards;
+	opacity: 0;
+}
+
+.header.active h1 {
+	opacity: 1;
+}
+
+.header.inactive h1 {
+	opacity: 0;
+}
+
+/*****POP-UP*****/
+
+.pop-up-container {
+	position: relative;
+	display: block;
+}
+
+.pop-up.active {
+	opacity: 1;
+}
+
+.pop-up {
+	--animation-duration: 1.5s;
+	--animation-distance: 20px;
+	--animation-scaling: 1.1;
+
+	z-index: 11;
+	position: absolute;
+
+	opacity: 0;
+	padding: 10px 15px 10px 15px;
+	border-radius: 5px;
+	font-size: 14px;
+	color: white;
+
+	user-select: none;
+	cursor: pointer;
+	border: 1px solid lightgray;
+	background-color: var(--content-color-dark);
+	transition: opacity 1s 0.2s;
+}
+
+.pop-up.exagerated {
+	--animation-distance: 30px;
+	--animation-scaling: 1.2;
+}
+
+.pop-up::after {
+	content: '';
+	position: absolute;
+	z-index: 12;
+
+	width: 12px;
+	height: 12px;
+	bottom: -8px;
+
+	left: 0;
+	right: 0;
+	margin-left: auto;
+	margin-right: auto;
+
+	background-color: var(--content-color-dark);
+	border-radius: 1px;
+	border-width: 0px 2px 2px 0px;
+	border-color: lightgray;
+	border-style: solid;
+
+	transform: rotate(45deg);
+}
+
+.pop-up.top {
+	top: auto;
+	bottom: calc(100% + 20px);
+	width: fit-content;
+	height: fit-content;
+	left: 0;
+	right: 0;
+	margin-left: auto;
+	margin-right: auto;
+
+	animation: popup-upwards 1s cubic-bezier(.47,1.64,.41,.8) 0s infinite forwards;
+}
+
+.pop-up.top::after {
+	bottom: -8px;
+	left: 0;
+	right: 0;
+	margin-left: auto;
+	margin-right: auto;
+	border-width: 0px 2px 2px 0px;
+	border-color: lightgray;
+}
+
+.pop-up.right {
+	--animation-distance: 10px;
+
+	top: 0px;
+	bottom: 0px;
+	left: calc(100% + 40px);
+	right: auto;
+	margin-top: auto;
+	margin-bottom: auto;
+
+	height: fit-content;
+	width: fit-content;
+	text-wrap: nowrap;
+
+	animation: popup-right 1s cubic-bezier(.47,1.64,.41,.8) 0s infinite forwards;
+}
+
+.pop-up.right::after {
+	left: -8px;
+	right: auto;
+	bottom: 0;
+	top: 0;
+	margin-top: auto;
+	margin-bottom: auto;
+	border-width: 0px 0px 2px 2px;
+	border-color: lightgray;
+}
+
+@keyframes popup-upwards {
+	0% {
+		transform: translateY(0) scale(1);
+	}
+	50% {
+		transform: translateY(calc(-1 * var(--animation-distance))) scale(var(--animation-scaling));
+	}
+	100% {
+		transform: translateY(0) scale(1);
+	}
+}
+
+@keyframes popup-right {
+	0% {
+		transform: translateX(0) scale(1);
+	}
+	50% {
+		transform: translateX(calc(-1 * var(--animation-distance))) scale(var(--animation-scaling));
+	}
+	100% {
+		transform: translateX(0) scale(1);
+	}
+}
+
+/* HIDDEN WINDOW */
+
+.hidden-window {
+	--vertical-position: 20px;
+
+	position: absolute;
+	z-index: 20;
+	height: 100%;
+
+	left: 0px;
+	top: var(--vertical-position);
+
+	color: white;
+	user-select: none;
+}
+
+.hidden-window .wrapper {
+	position: sticky;
+	top: var(--vertical-position);
+}
+
+.hidden-window .wrapper>h2 {
+	position: absolute;
+
+	z-index: 1;
+	margin: 0px;
+	padding: 15px 10px 15px 10px;
+
+	writing-mode: vertical-rl;
+	text-orientation: sideways;
+
+	font-weight: normal;
+	font-size: 14px;
+
+	cursor: pointer;
+
+	border-width: 1px 1px 1px 0px;
+	border-style: solid;
+	border-color: var(--content-color-orange);
+	border-radius: 0px 10px 10px 0px;
+	background-color: var(--content-color-dark);
+	box-shadow: 0px 2px 10px var(--content-color-dark-transparent);
+
+	transition: 0.2s padding;
+}
+
+.hidden-window .wrapper>h2.inactive {
+	display: none;
+}
+
+.hidden-window .wrapper>h2.active {
+	display: block;
+}
+
+.hidden-window .wrapper .content {
+	position: sticky;
+	top: var(--vertical-position);
+
+	padding: 15px 30px 15px 20px;
+	max-width: 300px;
+
+	z-index: 2;
+
+	transform: translateX(-100%);
+
+	border-width: 1px 1px 1px 0px;
+	border-style: solid;
+	border-color: var(--content-color-orange);
+	border-radius: 0px 10px 10px 0px;
+	background-color: var(--content-color-dark);
+	box-shadow: 0px 2px 10px var(--content-color-dark-transparent);
+
+	transition: transform 0.4s;
+}
+
+.hidden-window .wrapper .content.inactive {
+	transform: translateX(-100%);
+}
+
+.hidden-window .wrapper .content.active {
+	transform: translateX(0%);
+}
+
+.hidden-window .wrapper .content h2 {
+	margin: 0px;
+	font-size: 16px;
+}
+
+.hidden-window .wrapper .content p {
+	text-align: justify;
+	font-size: 13px;
+}
+
+.hidden-window .wrapper .content a {
+	user-select: auto;
+	text-decoration: none;
+	color: white;
+	font-size: 14px;
+}
+
+.hidden-window .wrapper .content a:active {
+	color: var(--content-color-red);
+}
+
+.hidden-window .wrapper .content .button {
+	--button-size: 20px;
+
+	position: absolute;
+	top: 15px;
+	right: 15px;
+	width: var(--button-size);
+	height: var(--button-size);
+	
+	background-size: var(--button-size);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.hidden-window .wrapper .content .button:active {
+	transform: scale(0.9);
+}
+
+.hidden-window .wrapper .content .button.close {
+	background-image: url("../images/icons/close-button.webp");
+}
+
+@media (hover: hover) {
+	.hidden-window .wrapper .content a:hover {
+		color: var(--content-color-yellow);
+	}
+
+	.hidden-window .wrapper .content .button:hover {
+		transform: scale(1.1);
+	}
+
+	.hidden-window .wrapper>h2:hover {
+		padding-left: 20px;
+	}
 }

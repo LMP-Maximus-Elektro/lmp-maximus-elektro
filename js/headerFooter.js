@@ -4,48 +4,56 @@ let header;
 let headerSize;
 let footerSize;
 
+let hamburger;
+let hamburgerMenu;
+let hamburgerDuration;
+let hamburgerTimeout;
+
+window.addEventListener("load", () => { initHeaderFooter(); });
+
 function initHeaderFooter()
 {
 	body = document.querySelector("body");
 	header = document.querySelector("header");
 	footer = document.querySelector("footer");
-	loadHeaderFooter();
 	headerSize = header.offsetHeight;
-	footerSize = footer.querySelector("#footer-wrapper").offsetHeight;
+	footerSize = footer.querySelector(".wrapper").offsetHeight;
 	if (body.innerHeight > window.innerHeight) {
 		hideFooter();
 	}
-	document.getElementById("footer-distancer").style.height = footerSize;
+	footer.querySelector(".distancer").style.height = footerSize;
+
+	initHamburger();
+
+	window.addEventListener("scroll", () => { handleScrollFooter(); });
 }
 
-function loadHeaderFooter()
-{
-	fetch("pages/header.html").then((response) => { return response.text(); }).then((html) => { header.innerHTML = html; }).catch((error) => { showError(error); });
-	fetch("pages/footer.html").then((response) => { return response.text(); }).then((html) => { footer.innerHTML = html; }).catch((error) => { showError(error); });
-}
-
-function hideFooter()
-{
-	footer.classList.remove("active");
-	footer.classList.add("inactive");
-}
-
-function showFooter()
-{
-	footer.classList.remove("inactive");
-	footer.classList.add("active");
+function initHamburger() {
+	hamburger = header.querySelector(".hamburger");
+	hamburgerMenu = header.querySelector(".hamburger-menu");
+	hamburgerDuration = parseFloat(getComputedStyle(hamburger).getPropertyValue("--animation-duration"));
+	hamburger.addEventListener("click", () => {
+		if (hamburgerTimeout) {
+			clearTiemout(hamburgerTimeout);
+		}
+		showElement(hamburger, !isElementVisible(hamburger));
+		hamburgerTimeout = setTimeout(() => {
+			hamburgerTimeout = null;
+			showElement(hamburgerMenu, !isElementVisible(hamburgerMenu));
+		}, hamburgerDuration * 1000);
+	});
 }
 
 function handleScrollFooter()
 {
-	if (body.innerHeight <= window.innerHeight) {
-		showFooter();
-		return;
-	}
 	if (window.scrollY > footerSize) {
-		showFooter();
+		showElement(footer, true);
 	}
 	else {
-		hideFooter();
+		showElement(footer, false);
 	}
+}
+
+function returnToTop() {
+	window.scrollTo(0, 0);
 }

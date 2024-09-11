@@ -1,7 +1,6 @@
-images must be 1280x720 resolution
+resolution	1600x400
+		1280x320
 
-images must be .jpg format
+aspect-ratio	4:1.2
 
-images are to be placed in the division element
-with the id "content-slides" under a division
-of class "content-slide"
+format		webp

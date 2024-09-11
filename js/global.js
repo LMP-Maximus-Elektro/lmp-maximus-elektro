@@ -1,67 +1,109 @@
 // SCROLLING
 
-function ScrollElement(el, offset = 0)
+function ScrollElement(element)
 {
-	this.el = el;
-	this.offset = offset;
+	this.element = element;
+	this.offset = parseInt(this.element.getAttribute("data-scroll-offset"));
+	if (!this.offset) {
+		this.offset = 0;
+	}
+	this.mode = this.element.getAttribute("data-scroll-mode");
+	if (!this.mode) {
+		this.mode = "once";
+	} else {
+		if (this.mode != "once" && this.mode != "multiple") {
+			this.mode = "once";
+		}
+	}
+	this.direction = this.element.getAttribute("data-scroll-direction");
+	if (!this.direction) {
+		this.direction = "default";
+	} else {
+		if (this.direction != "default" && this.direction != "both") {
+			this.direction = "default";
+		}
+	}
 }
 
-let scrollElements;
+let scrollElements = [];
 
 function initScroll()
 {
 	let scrolls = document.querySelectorAll("[data-scroll]");
-	scrollElements = [scrolls.length];
-	for (let i = 0; i < scrolls.length; i++)
-	{
-		scrollElements[i] = new ScrollElement(scrolls[i], scrolls[i].getAttribute("data-scroll-offset"));
+	for (const scroll of scrolls) {
+		scrollElements.push(new ScrollElement(scroll));
 	}
+	handleScroll();
 }
 
 function handleScroll()
 {
 	for (let i = 0; i < scrollElements.length; i++)
 	{
-		if (!scrollElements[i].el) {
+		if (!scrollElements[i].element) {
 			continue;
 		}
 		showScrollElement(scrollElements[i], isWithinScroll(scrollElements[i]));
 	}
 }
 
-function showScrollElement(el, show)
+function isWithinScroll(scroll)
 {
-	if (show)
-	{
-		el.el.classList.add("active");
-		el.el.classList.remove("inactive");
+	if (scroll.mode == "once") {
+		if (window.innerHeight >= scroll.element.getBoundingClientRect().top + scroll.offset) {
+			return true;
+		}
 	}
-	else
-	{
-		el.el.classList.remove("active");
-		el.el.classList.add("inactive");
+	else if (scroll.mode == "multiple") {
+		if (scroll.direction == "both") {
+			if (window.innerHeight >= scroll.element.getBoundingClientRect().top + scroll.offset
+				&& 0 <= scroll.element.getBoundingClientRect().bottom - scroll.offset) {
+				return true;
+			}
+			return false;
+			/*if (window.innerHeight < scroll.element.getBoundingClientRect().top) {
+				return false;
+			}*/
+		}
+		else if (scroll.direction == "default") {
+			if (window.innerHeight >= scroll.element.getBoundingClientRect().top + scroll.offset) {
+				return true;
+			}
+			if (window.innerHeight < scroll.element.getBoundingClientRect().top) {
+				return false;
+			}
+		}
 	}
-}
-
-function isWithinScroll(el, offset = 0)
-{
-	if (window.screenTop > el.el.getBoundingClientRect().top - window.innerHeight - el.offset)
-	{
+	if (isElementVisible(scroll.element)) {
 		return true;
 	}
-	else
-	{
-		return false;
-	}
 }
 
-// ERROR
+// global
 
-function showError(error) {
-	//alert("Došlo je do greške web stranice. Molimo Vas da prijavite grešku na i-mejl adresu nikola2001zagorac@gmail.com\n" + error.message);
+function showScrollElement(scroll, show) {
+	showElement(scroll.element, show);
 }
 
 function initContent() {
-	document.getElementById("content").style.paddingTop = headerSize;
+	//document.getElementById("content").style.paddingTop = headerSize;
 	document.querySelector(":root").style.setProperty("--header-height", headerSize.toString() + "px");
+}
+
+function showElement(element, show)
+{
+	if (show)
+	{
+		element.classList.add("active");
+		element.classList.remove("inactive");
+	}
+	else
+	{
+		element.classList.remove("active");
+		element.classList.add("inactive");
+	}
+}
+
+function isElementVisible(element) {
+	return element.classList.contains("active");
 }
