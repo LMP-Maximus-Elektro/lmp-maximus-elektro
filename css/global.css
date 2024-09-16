@@ -54,6 +54,7 @@ body::after {
 
 .header {
 	--header-animation-speed: 3.5s;
+	--offset-y: 0px;
 
 	position: relative;
 	display: flex;
@@ -99,7 +100,7 @@ body::after {
 	position: absolute;
 
 	left: 0px;
-	bottom: 30px;
+	bottom: calc(30px + var(--offset-y));
 	height: 2px;
 	width: 0px;
 	opacity: 0.8;
@@ -118,14 +119,31 @@ body::after {
 @keyframes header-dot-in {
 	from {
 		left: 0px;
-		bottom: 27px;
+		bottom: calc(26px + var(--offset-y));
+		width: 10px;
+		height: 10px;
+		border-radius: 5px;
+	}
+	to {
+		bottom: calc(26px + var(--offset-y));
+		width: 10px;
+		height: 10px;
+		border-radius: 5px;
+		left: 100%;
+	}
+}
+
+@keyframes header-dot-in-resize {
+	from {
+		left: 0px;
+		bottom: calc(28px + var(--offset-y));
 		width: 6px;
 		height: 6px;
 		border-radius: 3px;
 	}
 	to {
 		left: 100%;
-		bottom: 15px;
+		bottom: calc(15px + var(--offset-y));
 		width: 30px;
 		height: 30px;
 		border-radius: 15px;
@@ -147,7 +165,7 @@ body::after {
 	position: absolute;
 
 	left: 0px;
-	bottom: 22px;
+	bottom: calc(28px + var(--offset-y));
 	width: 6px;
 	height: 6px;
 	border-radius: 3px;
@@ -283,6 +301,34 @@ body::after {
 	margin-top: auto;
 	margin-bottom: auto;
 	border-width: 0px 0px 2px 2px;
+	border-color: lightgray;
+}
+
+.pop-up.left {
+	--animation-distance: 10px;
+
+	top: 0px;
+	bottom: 0px;
+	left: auto;
+	right: calc(100% + 40px);
+	margin-top: auto;
+	margin-bottom: auto;
+
+	height: fit-content;
+	width: fit-content;
+	text-wrap: nowrap;
+
+	animation: popup-right 1s cubic-bezier(.47,1.64,.41,.8) 0s infinite forwards;
+}
+
+.pop-up.left::after {
+	left: auto;
+	right: -8px;
+	bottom: 0;
+	top: 0;
+	margin-top: auto;
+	margin-bottom: auto;
+	border-width: 2px 2px 0px 0px;
 	border-color: lightgray;
 }
 

@@ -40,7 +40,7 @@ function initHamburger() {
 		hamburgerTimeout = setTimeout(() => {
 			hamburgerTimeout = null;
 			showElement(hamburgerMenu, !isElementVisible(hamburgerMenu));
-		}, hamburgerDuration * 1000);
+		}, hamburgerDuration * 500);
 	});
 }
 
