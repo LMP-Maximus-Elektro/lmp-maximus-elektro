@@ -46,6 +46,7 @@ function lastGalleryImage() {
 }
 
 function showGalleryImage(index) {
+    galleryPreview.mobileTitle.textContent = activeGallery.images[index].title;
     galleryPreview.title.textContent = activeGallery.images[index].title;
     galleryPreview.image.setAttribute("src", activeGallery.images[index].source);
     currentGalleryImage = index;
@@ -59,6 +60,7 @@ function openGalleryPreview(gallery) {
     currentGalleryImage = 0;
     galleryPreview.image.setAttribute("src", activeGallery.images[0].source);
     galleryPreview.title.textContent = activeGallery.images[0].title;
+    galleryPreview.mobileTitle.textContent = activeGallery.images[0].title;
     showElement(galleryPreview.element, true);
 }
 
@@ -77,6 +79,12 @@ function GalleryPreview(element) {
     this.image = this.wrapper.querySelector("img");
     this.controls = this.wrapper.querySelector(".wrapper-controls");
 
+    this.mobileContainer = this.element.querySelector("#gallery-preview-mobile");
+    this.mobileTitle = this.mobileContainer.querySelector("h1");
+    this.mobilecloseButton = this.mobileContainer.querySelector(".button.close");
+
+    this.mobilecloseButton.addEventListener("click", () => { closeGalleryPreview(); });
+
     this.nextButton = this.controls.querySelector(".next");
     this.lastButton = this.controls.querySelector(".last");
     this.closeButton = this.controls.querySelector(".close");
@@ -84,6 +92,19 @@ function GalleryPreview(element) {
     this.nextButton.addEventListener("click", () => { nextGalleryImage(); });
     this.lastButton.addEventListener("click", () => { lastGalleryImage(); });
     this.closeButton.addEventListener("click", () => { closeGalleryPreview(); });
+
+    this.startTouchX = 0;
+    this.image.addEventListener("touchstart", (e) => {
+        this.startTouchX = e.touches[0].screenX;
+    });
+    this.image.addEventListener("touchend", (e) => {
+        if (this.startTouchX > e.changedTouches[0].screenX) {
+            lastGalleryImage();
+        }
+        else if (this.startTouchX < e.changedTouches[0].screenX) {
+            nextGalleryImage();
+        }
+    });
 }
 
 function Gallery(element) {

@@ -114,9 +114,54 @@
     background-image: url("../images/icons/close-button.webp");
 }
 
+#gallery-preview #gallery-preview-mobile {
+    display: none;
+}
+
 @media (hover: hover) {
     #gallery-preview .wrapper .wrapper-controls .button:hover {
         border-color: var(--content-color-yellow);
+    }
+}
+
+@media not (hover: hover) {
+    #gallery-preview .wrapper .wrapper-controls {
+        display: none;
+    }
+
+    #gallery-preview>.wrapper>h1 {
+        display: none;
+    }
+
+    #gallery-preview #gallery-preview-mobile {
+        position: absolute;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+
+        width: calc(100% - 40px);
+        z-index: 3;
+        padding: 20px;
+        top: 0px;
+        left: 0px;
+    }
+
+    #gallery-preview #gallery-preview-mobile h1 {
+        color: white;
+        font-size: 20px;
+        margin: 0px;
+    }
+
+    #gallery-preview #gallery-preview-mobile .button.close {
+        --button-size: 25px;
+        width: var(--button-size);
+        height: var(--button-size);
+        background-size: var(--button-size);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-image: url("../images/icons/close-button.webp");
     }
 }
 
