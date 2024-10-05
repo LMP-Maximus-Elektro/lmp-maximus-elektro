@@ -131,7 +131,7 @@ footer .return-to-top
 	margin: 20px;
 	width: 60px;
 	height: 60px;
-	z-index: 2;
+	z-index: 11;
 	background-color: var(--content-color-dark);
 	border-radius: 10px;
 	display: flex;
