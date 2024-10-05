@@ -21,6 +21,8 @@ body {
 	position: relative;
 	font-family: "open-sans-regular";
 	overflow-x: hidden;
+
+	background-color: var(--content-color-dark);
 }
 
 body::after {
@@ -35,7 +37,7 @@ body::after {
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
-	background-image: url("../images/content-background.webp");
+	background-image: url("../images/extras/wire-reel.webp");
 }
 
 #content-background {
@@ -48,6 +50,10 @@ body::after {
 	height: 100%;
 	background: var(--content-color-dark);
 	opacity: 0.3;
+}
+
+.no-scroll {
+	overflow: hidden;
 }
 
 /* section header */
@@ -176,7 +182,16 @@ body::after {
 }
 
 .header.active h1::before {
-	animation: header-dot-in var(--header-animation-speed) ease-out 0s 1 forwards;
+	--resize-animation: header-dot-in-resize;
+	--normal-animation: header-dot-in;
+
+	animation-duration: var(--header-animation-speed);
+	animation-timing-function: ease-out;
+	animation-delay: 0s;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
+	animation-name: var(--resize-animation);
+	/*animation: header-dot-in-resize var(--header-animation-speed) ease-out 0s 1 forwards;*/
 	opacity: 0.8;
 }
 

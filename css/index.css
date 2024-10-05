@@ -1,3 +1,7 @@
+body::after {
+	opacity: 0.8;
+}
+
 #slideshow {
 	height: fit-content;
 	width: 100%;
@@ -5,10 +9,6 @@
 	overflow: hidden;
 	user-select: none;
 
-	border-radius: 0px 0px 25px 25px;
-	border-width: 0px 0px 20px 0px;
-	border-style: ridge;
-	border-color: var(--content-color-red);
 	box-shadow: 0px 5px 10px var(--content-color-dark);
 }
 
@@ -363,24 +363,28 @@
 	position: relative;
 
 	box-shadow: 0px 0px 20px var(--content-color-dark);
-	background-color: rgba(20, 20, 20, 0.3);
 }
 
 #content-articles::after {
 	content: '';
 	position: absolute;
-	z-index: -9;
+	z-index: 0;
 	height: 100%;
 	width: 100%;
 	left: 0px;
 	top: 0px;
 	border-radius: 50px;
 
+	opacity: 0.7;
 	background-attachment: fixed;
 	background-repeat: repeat-y;
 	background-position: center;
 	background-size: cover;
-	background-image: url("../images/content-background-2.webp");
+	background-image: url("../images/extras/distribution-cabinet.webp");
+}
+
+#content-articles .header {
+	z-index: 1;
 }
 
 #content-articles .header h1 {
@@ -389,11 +393,13 @@
 }
 
 #content-articles>.elements {
+	gap: 50px;
 	padding: 40px 0px 50px 0px;
+	z-index: 1;
 	display: flex;
 	flex-direction: column;
-	gap: 50px;
 	overflow: hidden;
+	position: relative;
 }
 
 #content-articles>.elements>article {
@@ -580,10 +586,6 @@
 }
 
 @media screen and (max-width: 1024px) {
-	#slideshow {
-		border-width: 0px 0px 15px 0px;
-	}
-
 	#content-articles {
 		margin: 80px 25px 25px 25px;
 	}
@@ -664,10 +666,6 @@
 }
 
 @media screen and (max-width: 768px) {
-	#slideshow {
-		border-width: 0px 0px 10px 0px;
-	}
-
 	#slideshow-slides {
 		aspect-ratio: 16/9;
 	}
@@ -707,11 +705,6 @@
 }
 
 @media screen and (max-width: 425px) {
-	#slideshow {
-		border-radius: 0px 0px 10px 10px;
-		border-width: 0px 0px 5px 0px;
-	}
-
 	#slideshow-buttons {
 		height: 30px;
 		gap: 20px;
@@ -734,8 +727,8 @@
 		padding: 35px 0px 15px 0px;
 	}
 
-	#offers .header.acitve h1::before {
-		animation: header-dot-in var(--header-animation-speed) ease-out 0s 1 forwards;
+	#offers :is(.header,.acitve) h1::before {
+		animation-name: var(--normal-animation);
 	}
 
 	#offers article .pop-up {

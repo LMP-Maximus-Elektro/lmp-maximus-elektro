@@ -1,63 +1,219 @@
-#content-who
-{
-	margin: 40px 100px 10px 100px;
+body::after {
+	opacity: 0.8;
+	background-image: url("../images/extras/electric-grid.png");
 }
 
-#content-who h1
-{
-	font-size: 30px;
-	margin: 0px 0px 40px 0px !important;
-	padding: 0px 0px 0px 15px !important;
-}
+section {
+	margin: 60px 50px 30px 50px;
 
-#content-who-text-wrapper
-{
-	gap: 20px;
 	display: flex;
 	flex-direction: column;
+	align-items: center;
+	gap: 20px;
 }
 
-#content-who-p-wrapper p
-{
-	font-size: 18px;
-	margin: 0px 0px 25px 0px;
-	padding: 0px;
+section article {
+	--transition-duration: 2s;
+	--transition-delay: 1s;
+
+	position: relative;
+	padding: 0px 20px 20px 20px;
+	width: auto;
+
+	transform: scaleY(0);
+	transform-origin: top;
+	transition-duration: var(--transition-delay);
 }
 
-#content-who-p-wrapper h3
-{
-	margin: 0px 0px 15px 0px !important;
-	padding: 0px;
-}
+section article::after {
+	content: '';
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
 
-#content-who article
-{
-	display: flex;
-	height: fit-content;
-	flex-direction: row;
-	gap: 50px;
-	padding: 50px;
-	color: white;
-	background-color: var(--content-color-dark-transparent);
+	z-index: -1;
+	opacity: 0.95;
 	border-radius: 5px;
+	background-color: var(--content-color-dark);
 }
 
-#content-who-img-wrapper
-{
+section article .content>img {
+	width: 720px;
+	border-radius: 5px;
+
+	transform: scale(0);
+	transition-delay: var(--transition-delay);
+	transition-duration: var(--transition-duration);
+}
+
+section article .content .text h1 {
+	color: white;
+	font-size: 22px;
+	margin: 0px 0px 10px 0px;
+	font-weight: normal;
+
+	transform-origin: right;
+	transform: scaleX(0);
+	transition-delay: var(--transition-delay);
+	transition-duration: var(--transition-duration);
+}
+
+section article .content .text p {
+	color: white;
+	text-align: justify;
+	font-size: 18px;
+	margin: 0px;
+	padding: 0px;
+	width: 720px;
+
+	opacity: 0;
+	transform: translateY(100px);
+	transition-delay: var(--transition-delay);
+	transition-duration: var(--transition-duration);
+}
+
+section article .content .text a {
+	margin: 10px 0px 10px 0px;
+
+	opacity: 0;
+	transform: translateY(100px);
+	transition-delay: var(--transition-delay);
+	transition-duration: var(--transition-duration);
+}
+
+section article .header {
+	--offset-y: -10px;
+	justify-content: center;
+}
+
+section article .header h1 {
+	padding: 20px 0px 30px 0px;
+	width: fit-content;
+}
+
+section article.active {
+	transform: scaleY(1);
+}
+
+section article.active .content img {
+	transform: scale(1);
+}
+
+section article.active .content .text p {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+section article.active .content .text h1 {
+	transform: scaleX(1);
+}
+
+section article.active .content .text a {
+	opacity: 1;
+	transform: translateY(0px);
+}
+
+section article .content {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 20px;
+}
+
+section article .content .text {
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
-	width: 600px;
 }
 
-#content-who-img-wrapper img
-{
-	width: 600px;
+#projects article .content .text a img {
+	height: 100px;
+	width: auto;
 }
 
-hr
-{
-	border: 1px solid var(--content-color-orange);
-	margin: 5px 0px 10px 0px;
-	width: 100%;
+#projects article .content>img {
+	width: 500px;
+}
+
+@media screen and (max-width: 1024px) {
+	section article .content .text {
+		align-items: center;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	section {
+		margin: 30px 0px 30px 0px;
+		gap: 20px;
+	}
+
+	section article::after {
+		border-radius: 0px;
+		opacity: 0.9;
+	}
+
+	section article .content>img {
+		width: 100%;
+	}
+
+	#projects article .content>img {
+		width: 100%;
+	}
+	
+	section article .content .text p {
+		width: 100%;
+		font-size: 18px;
+	}
+}
+
+@media screen and (max-width: 425px) {
+	section article {
+		padding: 0px 15px 20px 15px;
+	}
+
+	section article .content .text h1 {
+		font-size: 20px;
+		text-align: center;
+	}
+
+	section article .content .text p {
+		font-size: 16px;
+	}
+
+	section article .header h1 {
+		font-size: 22px;
+	}
+
+	section article :is(.header,.acitve) h1::before {
+		animation-name: var(--normal-animation);
+	}
+
+	#projects article .content .text a {
+		margin-top: 20px;
+	}
+
+	#projects article .content .text a img {
+		height: 75px;
+	}
+}
+
+@media screen and (max-width: 375px) {
+	section article .content {
+		gap: 15px;
+	}
+
+	section article .content .text h1 {
+		font-size: 18px;
+	}
+
+	section article .content .text p {
+		font-size: 14px;
+	}
+
+	section article .header h1 {
+		font-size: 20px;
+	}
 }

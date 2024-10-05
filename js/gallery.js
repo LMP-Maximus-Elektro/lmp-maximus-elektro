@@ -46,7 +46,7 @@ function lastGalleryImage() {
 }
 
 function showGalleryImage(index) {
-    galleryPreview.mobileTitle.textContent = activeGallery.images[index].title;
+    galleryPreview.mobileTitle.textContent = activeGallery.images[index].title + " (" + (index + 1) + "/" + activeGallery.images.length + ")";
     galleryPreview.title.textContent = activeGallery.images[index].title;
     galleryPreview.image.setAttribute("src", activeGallery.images[index].source);
     currentGalleryImage = index;
@@ -60,8 +60,9 @@ function openGalleryPreview(gallery) {
     currentGalleryImage = 0;
     galleryPreview.image.setAttribute("src", activeGallery.images[0].source);
     galleryPreview.title.textContent = activeGallery.images[0].title;
-    galleryPreview.mobileTitle.textContent = activeGallery.images[0].title;
+    galleryPreview.mobileTitle.textContent = activeGallery.images[0].title + " (" + 1 + "/" + activeGallery.images.length + ")";
     showElement(galleryPreview.element, true);
+    document.documentElement.classList.add("no-scroll");
 }
 
 function closeGalleryPreview() {
@@ -70,6 +71,7 @@ function closeGalleryPreview() {
     }
     activeGallery = null;
     showElement(galleryPreview.element, false);
+    document.documentElement.classList.remove("no-scroll");
 }
 
 function GalleryPreview(element) {
@@ -99,10 +101,10 @@ function GalleryPreview(element) {
     });
     this.image.addEventListener("touchend", (e) => {
         if (this.startTouchX > e.changedTouches[0].screenX) {
-            lastGalleryImage();
+            nextGalleryImage();
         }
         else if (this.startTouchX < e.changedTouches[0].screenX) {
-            nextGalleryImage();
+            lastGalleryImage();
         }
     });
 }
