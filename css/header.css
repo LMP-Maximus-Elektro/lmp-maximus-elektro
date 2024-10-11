@@ -1,4 +1,5 @@
 header {
+	gap: 25px;
 	width: 100%;
 	background: var(--content-color-dark);
 	display: flex;
@@ -11,6 +12,9 @@ header {
 header .text-logo {
 	display: none;
 	height: 50px;
+
+	/*new*/
+	margin: 15px;
 }
 
 header .text-logo img {
@@ -18,6 +22,7 @@ header .text-logo img {
 }
 
 header .logo {
+	display: none;
 	position: relative;
 
 	width: 80px;

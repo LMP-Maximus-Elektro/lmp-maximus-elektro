@@ -4,6 +4,19 @@ footer .wrapper .decoration-image {
 	bottom: 0px;
 	height: 250px;
 	z-index: inherit;
+
+	transition: transform 0.5s 0.2s;
+	transform: scale(0);
+	transform-origin: left;
+}
+
+footer.inactive .wrapper .decoration-image {
+	transition: transform 0.2s;
+	transform: scale(0);
+}
+
+footer.active .wrapper .decoration-image {
+	transform: scale(1);
 }
 
 footer
@@ -55,7 +68,7 @@ footer .wrapper
 	justify-content: space-evenly;
 
 	color: white;
-	background: rgb(24, 24, 24);
+	background: var(--content-color-dark);
 	border-top: 2px solid var(--content-color-orange);
 }
 
@@ -112,8 +125,8 @@ footer .wrapper .contact a.location::before {
 
 footer .wrapper .logo
 {
-	height: 60px;
-	margin: 10px;
+	height: 50px;
+	margin: 15px;
 }
 
 footer .distancer

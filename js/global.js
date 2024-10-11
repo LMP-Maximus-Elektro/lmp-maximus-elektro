@@ -1,7 +1,18 @@
 // SCROLLING
 
-function ScrollElement(element)
-{
+function PageTopScrollElement(element) {
+	this.element = element;
+	this.mode = this.element.getAttribute("data-page-top-only-mode");
+	if (!this.mode) {
+		this.mode = "once";
+	} else {
+		if (this.mode != "once" && this.mode != "multiple") {
+			this.mode = "once";
+		}
+	}
+}
+
+function ScrollElement(element) {
 	this.element = element;
 	this.offset = parseInt(this.element.getAttribute("data-scroll-offset"));
 	if (!this.offset) {
@@ -26,29 +37,46 @@ function ScrollElement(element)
 }
 
 let scrollElements = [];
+let pageTopElements = [];
 
-function initScroll()
-{
+function initScroll() {
 	let scrolls = document.querySelectorAll("[data-scroll]");
 	for (const scroll of scrolls) {
 		scrollElements.push(new ScrollElement(scroll));
 	}
+	let pageTopScrolls = document.querySelectorAll("[data-page-top-only]");
+	for (const pageTop of pageTopScrolls) {
+		console.log(pageTop);
+		pageTopElements.push(new PageTopScrollElement(pageTop));
+	}
 	handleScroll();
 }
 
-function handleScroll()
-{
-	for (let i = 0; i < scrollElements.length; i++)
-	{
+function handleScroll() {
+	for (let i = 0; i < scrollElements.length; i++) {
 		if (!scrollElements[i].element) {
 			continue;
 		}
 		showScrollElement(scrollElements[i], isWithinScroll(scrollElements[i]));
 	}
+	handleTopPageScroll();
 }
 
-function isWithinScroll(scroll)
-{
+function handleTopPageScroll() {
+	if (window.scrollY > 0) {
+		for (pageTop of pageTopElements) {
+			showElement(pageTop.element, false);
+		}
+	} else {
+		for (pageTop of pageTopElements) {
+			if (pageTop.mode == "multiple") {
+				showElement(pageTop.element, true);
+			}
+		}
+	}
+}
+
+function isWithinScroll(scroll) {
 	if (scroll.mode == "once") {
 		if (window.innerHeight >= scroll.element.getBoundingClientRect().top + scroll.offset) {
 			return true;
@@ -90,15 +118,12 @@ function initContent() {
 	document.querySelector(":root").style.setProperty("--header-height", headerSize.toString() + "px");
 }
 
-function showElement(element, show)
-{
-	if (show)
-	{
+function showElement(element, show) {
+	if (show) {
 		element.classList.add("active");
 		element.classList.remove("inactive");
 	}
-	else
-	{
+	else {
 		element.classList.remove("active");
 		element.classList.add("inactive");
 	}

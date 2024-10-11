@@ -2,14 +2,67 @@ body::after {
 	opacity: 0.8;
 }
 
+#scroll-notification {
+	position: fixed;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	margin-left: auto;
+	margin-right: auto;
+	left: 0px;
+	right: 0px;
+	bottom: 100px;
+	z-index: 10;
+
+	transition: 0.2s;
+}
+
+#scroll-notification.active {
+	opacity: 1;
+	animation-name: scroll-notification-arrow;
+	animation-duration: 2s;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+}
+
+#scroll-notification.inactive {
+	opacity: 0;
+}
+
+#scroll-notification h1 {
+	color: white;
+	font-weight: normal;
+	font-size: 30px;
+	letter-spacing: 2px;
+}
+
+#scroll-notification img {
+	height: 100px;
+	width: auto;
+}
+
+@keyframes scroll-notification-arrow {
+	0% {
+		transform: translateY(0px);
+	}
+	50% {
+		transform: translateY(15px);
+	}
+	100% {
+		transform: translateY(0px);
+	}
+}
+
 #slideshow {
 	height: fit-content;
 	width: 100%;
 	position: relative;
 	overflow: hidden;
 	user-select: none;
-
-	box-shadow: 0px 5px 10px var(--content-color-dark);
+/*	
+	box-shadow: 0px 5px 10px var(--content-color-dark);*/
 }
 
 #slideshow-slides {
@@ -22,8 +75,8 @@ body::after {
 	flex-direction: column;
 	justify-content: center;
 	align-content: center;
-
-	background-color: var(--content-color-dark);
+/*
+	background-color: var(--content-color-dark);*/
 }
 
 #slideshow-slides picture {
@@ -356,12 +409,13 @@ body::after {
 /*VVVVVVVVVVVVVVVVVV*/
 
 #content-articles {
-	margin: 100px 50px 50px 50px;
+	/*margin: 100px 50px 50px 50px;*/
 	padding: 0px 50px 0px 50px;
 
-	border-radius: 50px;
+	/*border-radius: 50px;*/
 	position: relative;
 
+	background-color: var(--content-color-dark);
 	box-shadow: 0px 0px 20px var(--content-color-dark);
 }
 
@@ -373,14 +427,16 @@ body::after {
 	width: 100%;
 	left: 0px;
 	top: 0px;
-	border-radius: 50px;
+	/*border-radius: 50px;
+	opacity: 0.7;
+	*/
 
 	opacity: 0.7;
 	background-attachment: fixed;
 	background-repeat: repeat-y;
 	background-position: center;
 	background-size: cover;
-	background-image: url("../images/extras/distribution-cabinet.webp");
+	background-image: url("../images/extras/distribution-cabinet.jpg");
 }
 
 #content-articles .header {
@@ -418,7 +474,7 @@ body::after {
 	display: flex;
 	flex-direction: column;
 
-	border-radius: 25px;
+	border-radius: 10px;
 	width: 1280px;
 	height: fit-content;
 	padding: 20px 30px 30px 30px;
@@ -482,7 +538,7 @@ body::after {
 #content-articles>.elements>article>.wrapper>.content img {
 	width: 384px;
 	aspect-ratio: 16/9;
-	border-radius: 10px;
+	border-radius: 5px;
 }
 
 #content-articles>.elements>article>.wrapper>.content>.text>.link-wrapper {
@@ -518,7 +574,7 @@ body::after {
 #content-articles>.elements>article>.wrapper>.content>.text p {
 	margin: 2px 0px 0px 25px;
 	text-align: justify;
-	font-size: 16px;
+	font-size: 18px;
 }
 
 #content-articles>.elements>article.right>.wrapper>.content>.text p {
@@ -586,9 +642,9 @@ body::after {
 }
 
 @media screen and (max-width: 1024px) {
-	#content-articles {
+	/*#content-articles {
 		margin: 80px 25px 25px 25px;
-	}
+	}*/
 
 	#content-articles>.elements>article h1 {
 		font-size: 20px;
@@ -692,15 +748,21 @@ body::after {
 
 	#content-articles {
 		padding: 0px 15px 0px 15px;
-		border-radius: 25px;
+		/*border-radius: 25px;*/
 	}
 
-	#content-articles::after {
+	/*#content-articles::after {
 		border-radius: 25px;
-	}
+	}*/
 
 	#content-articles>.elements {
 		padding: 30px 0px 15px 0px;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	#scroll-notification {
+		display: none;
 	}
 }
 
