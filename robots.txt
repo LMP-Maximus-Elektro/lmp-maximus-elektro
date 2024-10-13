@@ -1,6 +1,7 @@
 User-agent: *
 
 Allow: /
+Allow: /images/icons/icon.png
 
 Disallow: /js
 Disallow: /images
