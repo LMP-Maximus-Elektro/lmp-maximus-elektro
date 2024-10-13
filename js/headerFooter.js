@@ -24,7 +24,7 @@ function initHeaderFooter()
 	footer.querySelector(".distancer").style.height = footerSize;
 
 	initHamburger();
-
+	
 	window.addEventListener("scroll", () => { handleScrollFooter(); });
 }
 
