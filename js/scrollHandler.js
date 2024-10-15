@@ -1,11 +1,13 @@
-// SCROLLING
-
 let scrollElements = [];
 let pageTopElements = [];
 
-window.addEventListener("load", () => { initScroll(); });
+let initializedScroll = false;
 
-function initScroll() {
+export function initScroll() {
+	if (initializedScroll) {
+		return;
+	}
+	initializedScroll = true;
 	let scrolls = document.querySelectorAll("[data-scroll]");
 	for (const scroll of scrolls) {
 		scrollElements.push(new ScrollElement(scroll));
@@ -14,19 +16,39 @@ function initScroll() {
 	for (const pageTop of pageTopScrolls) {
 		pageTopElements.push(new PageTopScrollElement(pageTop));
 	}
-	if (window.scrollY > 0) {
-		handlePageScrolling();
-	}
 	window.addEventListener("scroll", () => { handlePageScrolling(); });
 }
 
+export function handlePageScrolling() {
+	handleScrollElements();
+	handleTopPageScroll();
+}
+
+function handleTopPageScroll() {
+	/*for (let pageTop of pageTopElements) {
+		//TODO: refactor + add inverted
+	}*/
+
+	if (window.scrollY > 0) {
+		for (let pageTop of pageTopElements) {
+			tools.showElement(pageTop.element, false);
+		}
+	} else {
+		for (let pageTop of pageTopElements) {
+			if (pageTop.mode == "multiple") {
+				tools.showElement(pageTop.element, true);
+			}
+		}
+	}
+}
+
 function showScrollElement(scroll, show) {
-	showElement(scroll.element, show);
+	tools.showElement(scroll.element, show);
 }
 
 function PageTopScrollElement(element) {
 	this.element = element;
-	this.mode = this.element.getAttribute("data-page-top-only-mode");
+	this.mode = this.element.getAttribute("data-mode");
 	if (!this.mode) {
 		this.mode = "once";
 	} else {
@@ -34,25 +56,13 @@ function PageTopScrollElement(element) {
 			this.mode = "once";
 		}
 	}
-}
-
-function handleTopPageScroll() {
-	if (window.scrollY > 0) {
-		for (pageTop of pageTopElements) {
-			showElement(pageTop.element, false);
-		}
-	} else {
-		for (pageTop of pageTopElements) {
-			if (pageTop.mode == "multiple") {
-				showElement(pageTop.element, true);
-			}
-		}
+	this.inverted = false;
+	if (this.element.getAttribute("data-inverted")) {
+		this.inverted = true;
 	}
 }
 
 function ScrollElement(element) {
-	const RELATIVE_ASPECT_RATIO = 1.777; // 16:9 aspect ratio
-
 	this.element = element;
 	this.active = false;
 	this.mode = this.element.getAttribute("data-scroll-mode");
@@ -97,7 +107,7 @@ function isScrollWithinOffsetTop(scroll) {
 	return false;
 };
 
-function handlePageScrolling() {
+function handleScrollElements() {
 	for (let scroll of scrollElements) {
 		if (!scroll.element) {
 			continue;
@@ -105,7 +115,6 @@ function handlePageScrolling() {
 		scroll.active = handleScrollElement(scroll);
 		showScrollElement(scroll, scroll.active);
 	}
-	handleTopPageScroll();
 }
 
 function handleScrollElement(scroll) {
@@ -130,26 +139,4 @@ function handleScrollElement(scroll) {
 			}
 			return true;
 	}
-}
-
-// global
-
-function initContent() {
-	//document.getElementById("content").style.paddingTop = headerSize;
-	document.querySelector(":root").style.setProperty("--header-height", headerSize.toString() + "px");
-}
-
-function showElement(element, show) {
-	if (show) {
-		element.classList.add("active");
-		element.classList.remove("inactive");
-	}
-	else {
-		element.classList.remove("active");
-		element.classList.add("inactive");
-	}
-}
-
-function isElementVisible(element) {
-	return element.classList.contains("active");
 }

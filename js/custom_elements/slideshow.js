@@ -15,7 +15,7 @@ const slideTransitionDuration = 1000;
 function initSlides() {
 	slides = document.getElementById("slideshow-slides").querySelectorAll("picture");
 	if (slides.length <= 1) {
-		showElement(document.getElementById("slideshow-controls"), false);
+		tools.showElement(document.getElementById("slideshow-controls"), false);
 		return;
 	}
 	initSlideTransition();
@@ -33,10 +33,10 @@ function initSlideTransition() {
 }
 
 function showSlideTransition(show) {
-	showElement(slideTransitionElements[0], show);
+	tools.showElement(slideTransitionElements[0], show);
 	setTimeout(() => {
-		showElement(slideTransitionElements[1], show);
-		setTimeout(() => { showElement(slideTransitionElements[2], show); }, slideTransitionDurationPerElement);
+		tools.showElement(slideTransitionElements[1], show);
+		setTimeout(() => { tools.showElement(slideTransitionElements[2], show); }, slideTransitionDurationPerElement);
 	}, slideTransitionDurationPerElement);
 }
 
@@ -56,10 +56,10 @@ function initSlideSelectors() {
 
 function setActiveSlideSelector(index) {
 	if (currentSlideSelector) {
-		showElement(currentSlideSelector, false);
+		tools.showElement(currentSlideSelector, false);
 	}
 	currentSlideSelector = slideSelectors[index];
-	showElement(currentSlideSelector, true);
+	tools.showElement(currentSlideSelector, true);
 }
 
 function jumpToSlide(index) {
@@ -96,8 +96,8 @@ function previousSlide() {
 
 function setActiveSlide(index) {
 	setActiveSlideSelector(index);
-	showElement(slides[currentSlide], false);
-	showElement(slides[index], true);
+	tools.showElement(slides[currentSlide], false);
+	tools.showElement(slides[index], true);
     currentSlide = index;
 }
 

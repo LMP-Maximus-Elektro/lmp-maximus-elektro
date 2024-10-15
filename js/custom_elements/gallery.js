@@ -1,13 +1,11 @@
-window.addEventListener("load", () => { initGallery(); });
-
 let galleries = [];
 let galleryPreview;
 let activeGallery;
 let currentGalleryImage = 0;
 
-function initGallery() {
+function initGalleries() {
     galleryPreview = new GalleryPreview(document.getElementById("gallery-preview"));
-    showElement(galleryPreview.element, false);
+    tools.showElement(galleryPreview.element, false);
     if (!galleryPreview) {
         console.error("No #gallery-preview element found.");
         return;
@@ -61,7 +59,7 @@ function openGalleryPreview(gallery) {
     galleryPreview.image.setAttribute("src", activeGallery.images[0].source);
     galleryPreview.title.textContent = activeGallery.images[0].title;
     galleryPreview.mobileTitle.textContent = activeGallery.images[0].title + " (" + 1 + "/" + activeGallery.images.length + ")";
-    showElement(galleryPreview.element, true);
+    tools.showElement(galleryPreview.element, true);
     document.documentElement.classList.add("no-scroll");
 }
 
@@ -70,7 +68,7 @@ function closeGalleryPreview() {
         return;
     }
     activeGallery = null;
-    showElement(galleryPreview.element, false);
+    tools.showElement(galleryPreview.element, false);
     document.documentElement.classList.remove("no-scroll");
 }
 

@@ -1,5 +1,3 @@
-window.addEventListener("load", () => { initPopups(); });
-
 function initPopups() {
     //TODO: keep cookie of each popup for one day
 
