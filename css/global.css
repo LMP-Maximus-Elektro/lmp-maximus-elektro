@@ -115,11 +115,11 @@ body::after {
 }
 
 .header.active h1::after {
-	animation: header-line-in var(--header-animation-speed) ease-out 0s 1 forwards;
+	animation: header-line-in var(--header-animation-speed) ease-in 0s 1 forwards;
 }
 
 .header.inactive h1::after {
-	animation: header-line-out var(--header-animation-speed) ease-out 0s 1 forwards;
+	animation: header-line-out var(--header-animation-speed) ease-in 0s 1 forwards;
 }
 
 @keyframes header-dot-in {
@@ -186,7 +186,7 @@ body::after {
 	--normal-animation: header-dot-in;
 
 	animation-duration: var(--header-animation-speed);
-	animation-timing-function: ease-out;
+	animation-timing-function: ease-in;
 	animation-delay: 0s;
 	animation-iteration-count: 1;
 	animation-fill-mode: forwards;
@@ -196,7 +196,7 @@ body::after {
 }
 
 .header.inactive h1::before {
-	animation: header-dot-out var(--header-animation-speed) ease-out 0s 1 forwards;
+	animation: header-dot-out var(--header-animation-speed) ease-in 0s 1 forwards;
 	opacity: 0;
 }
 

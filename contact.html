@@ -10,9 +10,14 @@
 
 	<link rel="stylesheet" href="css/global.css">
 	<link rel="stylesheet" href="css/header.css">
-	<link rel="stylesheet" href="css/footer.css">
 	<link rel="stylesheet" href="css/contact.css">
 
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+    <script
+    src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js">
+	</script>
 	<script type="module" src="js/pages/contact.js"></script>
 </head>
 
@@ -49,21 +54,41 @@
 			<a href="about.html">O nama</a>
 		</nav>
 	</header>
-	<footer data-page-top-only data-mode="multiple" data-inverted>
-		<div class="return-to-top"><img src="images/icons/top.webp"></div>
-		<div class="distancer"></div>
-		<div class="wrapper">
-			<img class="decoration-image" src="images/extras/footer-background.webp">
-			<img class="logo" src="images/logo-text.png">
-			<div class="contact">
-				<a class="tag" href="index.html" title="Početna stranica">ELEKTRO INSTALACIJE est. 2024</a>
-				<a class="phone" href="tel:+38162255533" title="Pritisni da pozoveš">+381 62 25-55-33</a>
-				<a class="mail" href="mailto:lmpelektro1@gmail.com" title="Pošalji mejl">lmpelektro1@gmail.com</a>
-				<a class="location" href="https://maps.app.goo.gl/D47H3y2ETfZX4BEV7"
-					title="Pogledaj lokaciju">Sevastokratora Branka 68 Batajnica</a>
-			</div>
-		</div>
-	</footer>
+    <section id="contact-main">
+        <div class="wrapper">
+            <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11304.871184997959!2d20.283753!3d44.898565!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a5d639d7c7045%3A0xc13f55c48e8cc84c!2sLMP%20Maximus%20Elektro!5e0!3m2!1sen!2srs!4v1729026658979!5m2!1sen!2srs" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <div class="contact">
+                <div data-scroll data-scroll-offset=200 class="header">
+                    <h1>NAŠE KONTAKT INFORMACIJE</h1>
+                </div>
+                <a class="phone" href="tel:+38162255533">+381 62 25-55-33</a>
+                <a class="mail" href="mailto:lmpelektro1@gmail.com">lmpelektro1@gmail.com</a>
+                <a class="location" href="https://maps.app.goo.gl/D47H3y2ETfZX4BEV7">Sevastokratora Branka br. 68 Batajnica</a>
+            </div>
+        </div>
+    </section>
+    <section id="contact-form">
+        <div class="header active">
+            <h1>POŠALJITE NAM UPIT</h1>
+        </div>
+        <form action="sendMail(event)" method="post">
+            <div class="field">
+                <label for="form-name">Vaše ime: </label>
+                <input type="text" required id="form-name">
+            </div>
+            <div class="field">
+                <label for="form-phone">Kontakt telefon: </label>
+                <input type="tel" required id="form-phone">
+            </div>
+            <div class="field">
+                <label for="form-email">E-mail adresa: </label>
+                <input type="email" required id="form-email">
+            </div>
+            <label for="message">Poruka: </label>
+            <textarea rows="5" id="message" maxlength="300"></textarea>
+            <input type="submit" id="form-submit" value="Pošalji">
+        </form>
+    </section>
 </body>
 
 </html>

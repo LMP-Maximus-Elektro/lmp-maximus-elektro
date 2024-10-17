@@ -1,7 +1,15 @@
 let footerSize;
+let initializedFooter = false;
 
 export function initFooter()
 {
+	if (!footer) {
+		return;
+	}
+	if (initializedFooter) {
+		return;
+	}
+	initializedFooter = true;
 	footerSize = footer.querySelector(".wrapper").offsetHeight;
 	if (body.innerHeight > window.innerHeight) {
 		hideFooter();
